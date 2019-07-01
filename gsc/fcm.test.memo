@@ -1,0 +1,20 @@
+server-key : AAAAjBX0qC4:APA91bE6Chh3jFTNxwk8l8HhlsjK9p3OCsQCXlcu0eop6oO8R4AwFjCfAtR-9nTCmNAu7LB6DfAxHs1SDVgEJqOr15_31_Tg0LNJcLX_tGfPROZ3LuxNQtzLZJTYnV-0i9jmP-1wLP_gtbk4hv0NoJrCvMz3q_7kUg
+device-token : d348I0UIg_Q:APA91bHZ3lPOE7zU88WwNfRlB-b3KSmoqsmGsvnFn0jG4Y_XD0IYOXhoh6W6jo80b3Nhxl2I5UZCsGC4JjBvM_WwjDAfnWyNd0-1yVolxM0i-tFVxoUyvQ2-nTtpw39327o8ntD4O_uz
+
+https://www.getpostman.com/)
+http://zeany.net/35
+
+
+https://fcm.googleapis.com/fcm/send
+
+Authorization : key=AAAAjBX0qC4:APA91bE6Chh3jFTNxwk8l8HhlsjK9p3OCsQCXlcu0eop6oO8R4AwFjCfAtR-9nTCmNAu7LB6DfAxHs1SDVgEJqOr15_31_Tg0LNJcLX_tGfPROZ3LuxNQtzLZJTYnV-0i9jmP-1wLP_gtbk4hv0NoJrCvMz3q_7kUg
+Content-Type : application/json
+
+{	
+	"to":"cKmTAtvHr3Q:APA91bH_3eMWd9onZnWtlRqdKxLpw10rMFnGdRNEOxZbIyGoxJVZGr67i7RGG5PB92cm5g-cSzDYZYejVbk7HecgjDAyjOPs6b4o1dDvoIx8YrSC9I9Jc2jlOUCrGZvBZiWt2AnhRrlT",
+	"priority":"high",
+	"data":{
+		"messagetype":"alive"
+	}
+}
+

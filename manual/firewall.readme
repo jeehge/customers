@@ -1,0 +1,33 @@
+[APNS]
+
+Production
+	gateway.push.apple.com TCP 2195
+	feedback.push.apple.com TCP 2196
+
+Development
+	gateway.sandbox.push.apple.com TCP 2195
+	feedback.sandbox.push.apple.com TCP 2196
+
+[GCM/FCM]
+
+android.googleapis.com
+fcm.googleapis.com
+
+443,5228,5229,5230
+
+[DNS]
+53 port
+
+[RabbitMQ]
+
+mqtt : 1887
+console : 15672
+
+service rabbitmq-server stop
+service rabbitmq-server start
+
+[ActiveMQ]
+
+openwire : 61616
+console : 8161
+

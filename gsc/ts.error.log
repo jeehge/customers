@@ -1,0 +1,1082 @@
+TalkDao.upsertMsgBadgeCnt
+pbt.mPBT_BadgeCnt 에 중복키를 삽입할 수....
+2019-05-15 18:05:28 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:05:28 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:05:28 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:05:28 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:05:28 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:05:28 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:07:12 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:07:12 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8957
+  neighbours:
+2019-05-15 18:07:12 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:07:12 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:07:12 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:07:12 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:07:53 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:07:53 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8957
+  neighbours:
+2019-05-15 18:07:53 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:07:53 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:07:53 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:07:53 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:08:05 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:08:05 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8972
+  neighbours:
+2019-05-15 18:08:05 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:08:05 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:08:05 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:08:05 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:09:35 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:09:35 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8957
+  neighbours:
+2019-05-15 18:09:35 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:09:35 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:09:35 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:09:35 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:10:26 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:10:26 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:10:26 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:10:26 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:10:26 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:10:26 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:10:49 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:10:49 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8957
+  neighbours:
+2019-05-15 18:10:49 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:10:49 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:10:49 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:10:49 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:11:28 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:11:28 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:11:28 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:11:28 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:11:28 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:11:28 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:18:13 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:18:13 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:18:13 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:18:13 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:18:13 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:18:13 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:20:08 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:20:08 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:20:08 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:20:08 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:20:08 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:20:08 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:36:35 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:36:35 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:36:35 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:36:35 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:36:35 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:36:35 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:37:04 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:37:04 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:37:04 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:37:04 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:37:04 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:37:04 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:47:20 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:47:20 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8957
+  neighbours:
+2019-05-15 18:47:20 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:47:20 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:47:20 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:47:20 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:49:20 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:49:20 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8957
+  neighbours:
+2019-05-15 18:49:20 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:20 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:20 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:20 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:49:38 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:49:38 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:49:38 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:38 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:38 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:38 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:49:59 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:49:59 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.458.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.456.0>,<0.455.0>,rabbit_mqtt_sup,<0.433.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.456.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:49:59 =SUPERVISOR REPORT====
+     Supervisor: {<0.456.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:59 =SUPERVISOR REPORT====
+     Supervisor: {<0.455.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:59 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:49:59 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.432.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.431.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.433.0>,normal}]
+    links: [<0.431.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:51:08 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:51:08 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:51:08 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:51:08 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:51:08 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:51:08 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:56:21 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:56:21 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 610
+    stack_size: 27
+    reductions: 8971
+  neighbours:
+2019-05-15 18:56:21 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:56:21 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:56:21 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:56:21 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 18:56:40 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 18:56:40 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8957
+  neighbours:
+2019-05-15 18:56:40 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:56:40 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:56:40 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 18:56:40 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
+2019-05-15 19:06:13 =ERROR REPORT====
+Failed to start Ranch listener {acceptor,{0,0,0,0},1887} in ranch_tcp:listen([{cacerts,'...'},{key,'...'},{cert,'...'},{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]) for reason eaddrinuse (address already in use)
+2019-05-15 19:06:13 =CRASH REPORT====
+  crasher:
+    initial call: supervisor:ranch_acceptors_sup/1
+    pid: <0.504.0>
+    registered_name: []
+    exception exit: {{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse},[{ranch_acceptors_sup,listen_error,5,[{file,"src/ranch_acceptors_sup.erl"},{line,66}]},{ranch_acceptors_sup,init,1,[{file,"src/ranch_acceptors_sup.erl"},{line,44}]},{supervisor,init,1,[{file,"supervisor.erl"},{line,295}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.502.0>,<0.501.0>,rabbit_mqtt_sup,<0.479.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.502.0>]
+    dictionary: [{logger,error_logger}]
+    trap_exit: true
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 8957
+  neighbours:
+2019-05-15 19:06:13 =SUPERVISOR REPORT====
+     Supervisor: {<0.502.0>,ranch_listener_sup}
+     Context:    start_error
+     Reason:     {listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}
+     Offender:   [{pid,undefined},{id,ranch_acceptors_sup},{mfargs,{ranch_acceptors_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 19:06:13 =SUPERVISOR REPORT====
+     Supervisor: {<0.501.0>,tcp_listener_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}
+     Offender:   [{pid,undefined},{id,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}}},{mfargs,{ranch_listener_sup,start_link,[{acceptor,{0,0,0,0},1887},ranch_tcp,#{connection_type => supervisor,handshake_timeout => 5000,max_connections => infinity,num_acceptors => 10,socket_opts => [{port,1887},{ip,{0,0,0,0}},inet,{backlog,128},{nodelay,true}]},rabbit_mqtt_connection_sup,[]]}},{restart_type,permanent},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 19:06:13 =SUPERVISOR REPORT====
+     Supervisor: {local,rabbit_mqtt_sup}
+     Context:    start_error
+     Reason:     {shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}
+     Offender:   [{pid,undefined},{name,'rabbit_mqtt_listener_sup_0.0.0.0:1887'},{mfargs,{tcp_listener_sup,start_link,[{0,0,0,0},1887,ranch_tcp,[inet,{backlog,128},{nodelay,true}],rabbit_mqtt_connection_sup,[],{rabbit_networking,tcp_listener_started,[mqtt,[{backlog,128},{nodelay,true}]]},{rabbit_networking,tcp_listener_stopped,[mqtt,[{backlog,128},{nodelay,true}]]},10,"MQTT TCP listener"]}},{restart_type,transient},{shutdown,infinity},{child_type,supervisor}]
+
+2019-05-15 19:06:13 =CRASH REPORT====
+  crasher:
+    initial call: application_master:init/4
+    pid: <0.478.0>
+    registered_name: []
+    exception exit: {{{shutdown,{failed_to_start_child,'rabbit_mqtt_listener_sup_0.0.0.0:1887',{shutdown,{failed_to_start_child,{ranch_listener_sup,{acceptor,{0,0,0,0},1887}},{shutdown,{failed_to_start_child,ranch_acceptors_sup,{listen_error,{acceptor,{0,0,0,0},1887},eaddrinuse}}}}}}},{rabbit_mqtt,start,[normal,[]]}},[{application_master,init,4,[{file,"application_master.erl"},{line,138}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.477.0>]
+    message_queue_len: 1
+    messages: [{'EXIT',<0.479.0>,normal}]
+    links: [<0.477.0>,<0.42.0>]
+    dictionary: []
+    trap_exit: true
+    status: running
+    heap_size: 376
+    stack_size: 27
+    reductions: 219
+  neighbours:
