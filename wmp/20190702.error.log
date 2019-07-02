@@ -1,0 +1,281 @@
+org.springframework.transaction.NoTransactionException: No transaction aspect-managed TransactionStatus in scope
+        at org.springframework.transaction.interceptor.TransactionAspectSupport.currentTransactionStatus(TransactionAspectSupport.java:122)
+        at com.happyhouse.servers.ts.taslet.talk.PP_ROOM008_QueryAllMyRoomInfoListTaslet.process(PP_ROOM008_QueryAllMyRoomInfoListTaslet.java:181)
+        at com.happyhouse.servers.ts.taslet.TasletAbstract.execute(TasletAbstract.java:78)
+        at com.happyhouse.servers.ts.taslet.talk.PP_ROOM008_QueryAllMyRoomInfoListTaslet.execute(PP_ROOM008_QueryAllMyRoomInfoListTaslet.java:52)
+        at com.happyhouse.servers.ts.controller.TalkRestController.executeTaslet(TalkRestController.java:71)
+        at com.happyhouse.servers.ts.controller.TalkRestController.talk(TalkRestController.java:47)
+        at sun.reflect.GeneratedMethodAccessor159.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+        at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+        at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+        at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:854)
+        at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:765)
+        at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+        at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+        at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+        at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+        at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+        at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+        at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:208)
+        at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+        at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:347)
+        at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:263)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+        at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493)
+        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:137)
+        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+
+
+java.lang.RuntimeException: McsService Response [-900][-900]
+        at com.happyhouse.servers.ts.service.McsService.convertDoc(McsService.java:111)
+        at com.happyhouse.servers.ts.service.SedaService.convertMedia(SedaService.java:377)
+        at com.happyhouse.servers.ts.service.SedaService.onMediaConvert(SedaService.java:359)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.apache.camel.component.bean.MethodInfo.invoke(MethodInfo.java:408)
+        at org.apache.camel.component.bean.MethodInfo$1.doProceed(MethodInfo.java:279)
+        at org.apache.camel.component.bean.MethodInfo$1.proceed(MethodInfo.java:252)
+        at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:177)
+        at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+        at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+        at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+        at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:145)
+        at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+        at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:468)
+        at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:197)
+        at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:197)
+        at org.apache.camel.component.seda.SedaConsumer.sendToConsumers(SedaConsumer.java:298)
+        at org.apache.camel.component.seda.SedaConsumer.doRun(SedaConsumer.java:207)
+        at org.apache.camel.component.seda.SedaConsumer.run(SedaConsumer.java:154)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+19:21:01.305 [INFO] [http://10.105.253.14:12000/PDVService.aspx][16946109154405415][16946109154405415.mov][http://wink.wemakepeople.com:31000/tmt/media/20190702/16946109154405415.mov]
+
+
+java.lang.NullPointerException
+        at com.happyhouse.servers.ts.service.SedaService.onUpdateToRead(SedaService.java:345)
+        at sun.reflect.GeneratedMethodAccessor136.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.apache.camel.component.bean.MethodInfo.invoke(MethodInfo.java:408)
+        at org.apache.camel.component.bean.MethodInfo$1.doProceed(MethodInfo.java:279)
+        at org.apache.camel.component.bean.MethodInfo$1.proceed(MethodInfo.java:252)
+        at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:177)
+        at org.apache.camel.util.AsyncProcessorHelper.process(AsyncProcessorHelper.java:109)
+        at org.apache.camel.component.bean.BeanProcessor.process(BeanProcessor.java:68)
+        at org.apache.camel.component.bean.BeanProducer.process(BeanProducer.java:38)
+        at org.apache.camel.processor.SendProcessor.process(SendProcessor.java:145)
+        at org.apache.camel.management.InstrumentationProcessor.process(InstrumentationProcessor.java:77)
+        at org.apache.camel.processor.RedeliveryErrorHandler.process(RedeliveryErrorHandler.java:468)
+        at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:197)
+        at org.apache.camel.processor.CamelInternalProcessor.process(CamelInternalProcessor.java:197)
+        at org.apache.camel.component.seda.SedaConsumer.sendToConsumers(SedaConsumer.java:298)
+        at org.apache.camel.component.seda.SedaConsumer.doRun(SedaConsumer.java:207)
+        at org.apache.camel.component.seda.SedaConsumer.run(SedaConsumer.java:154)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:745)
+
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_GET_SEARCH_USERS_HCCC_NEW`(
+	in_USERIDNFR			numeric(18,0),			
+	in_SERVICE_CD			VARCHAR(10),			
+	in_TYPE_CD				VARCHAR(10),			
+	in_DEPT_NAME			NVARCHAR(50),			
+	in_KEYWORD				NVARCHAR(100),			
+	in_ORDER				VARCHAR(300)
+)
+BEGIN
+	DECLARE i_CHECK_ENG		CHAR(1);
+	DECLARE i_PROC_CHO		CHAR(1);
+	DECLARE i_CHECK_KEYTYPE	CHAR(1);
+	DECLARE i_GROUPCOCD					VARCHAR(50);
+	DECLARE i_USER_CLASSI_CD				VARCHAR(10);
+	DECLARE i_DUTY_CD					VARCHAR(10);
+	DECLARE i_POSITION_CD				VARCHAR(10);
+	DECLARE i_DEPT_NAME					NVARCHAR(200);
+	DECLARE i_USER_CLASSI_CD_LIST		VARCHAR(20);
+	DECLARE i_LegacyPK					VARCHAR(50);
+	DECLARE i_LegacyPK_List				VARCHAR(1000);
+	DECLARE i_WITH VARCHAR(1500);
+	DECLARE i_SELECT VARCHAR(3000);
+	DECLARE i_FROM VARCHAR(1000);
+	DECLARE i_WHERE VARCHAR(1500);
+	SET in_SERVICE_CD		= IFNULL(in_SERVICE_CD,'');
+	SET in_TYPE_CD			= IFNULL(in_TYPE_CD,'');
+	SET in_DEPT_NAME		= IFNULL(in_DEPT_NAME,'');
+	SET in_KEYWORD			= IFNULL(in_KEYWORD,'');
+	SET in_ORDER			= IFNULL(in_ORDER,'');
+	
+	SELECT usr10.positionCd, usr10.groupCoCd
+			,IFNULL(usr10.userClsCd, usr10.userCls), IFNULL(usr11.field20, ''), titleCd 
+			,CASE WHEN grp10.name LIKE '%팀'
+				THEN (SELECT g.name FROM mPMS_USER_GROUP10 g where g.groupIdnfr=grp10.upperGroupIdnfr)
+				ELSE grp10.name
+			  END
+			,CASE WHEN grp10.name LIKE '%팀'
+				THEN (SELECT g.path FROM mPMS_USER_GROUP10 g where g.groupIdnfr=grp10.upperGroupIdnfr)
+				ELSE grp10.path
+			  END
+	INTO i_POSITION_CD, i_GROUPCOCD, i_USER_CLASSI_CD, i_USER_CLASSI_CD_LIST, i_DUTY_CD, i_DEPT_NAME, i_LegacyPK 
+	FROM mPMS_USER_INFO10 usr10
+	INNER JOIN mPMS_USER_INFO11 usr11 ON usr10.groupCoCd = usr11.groupCoCd AND usr10.sawonNo = usr11.sawonNo
+	INNER JOIN MPMS_USER_GROUP11 grp11 ON grp11.userIdnfr = usr10.userIdnfr
+	INNER JOIN MPMS_USER_GROUP10 grp10 ON grp10.groupIdnfr = grp11.groupIdnfr
+	WHERE usr10.userIdnfr=in_USERIDNFR
+	LIMIT 1;
+	SET i_CHECK_ENG = 'N'; 
+	
+
+
+	SET i_PROC_CHO='N';
+
+	
+	
+
+	SET i_LegacyPK_List		= IFNULL(i_LegacyPK_List,'');
+	SET i_USER_CLASSI_CD		= IFNULL(i_USER_CLASSI_CD,'');
+	SET i_DUTY_CD			= IFNULL(i_DUTY_CD,'');
+	SET i_POSITION_CD		= IFNULL(i_POSITION_CD,'');
+	SET i_USER_CLASSI_CD_LIST	= IFNULL(i_USER_CLASSI_CD_LIST,'');
+	
+	IF in_SERVICE_CD='ROOM' THEN                               
+		SET i_SELECT = CONCAT('SELECT DISTINCT usr10.userIdnfr AS id
+	,0 AS type
+	,usr10.groupCoCd
+	,0 AS groupTotal
+	');
+		IF i_GROUPCOCD = 'tion' THEN
+			SET i_SELECT= CONCAT(i_SELECT,',userCls AS company
+	');
+		ELSE
+			SET i_SELECT= CONCAT(i_SELECT,',com20.cdName AS company
+	,IFNULL(usr11.field25,CONCAT(''http://210.126.248.231:35100/tbt/profileimage/'',usr10.sawonNo,''.jpg?default='',usr11.lastModfiYHS)) AS pictureUrl');
+		END IF;
+		SET i_SELECT= CONCAT(i_SELECT,',usr10.name,usr10.deptName,IFNULL(usr11.field10,'''') as task
+	,CASE
+	   WHEN usr10.title IS NULL THEN ''''
+	   ELSE usr10.title
+	 END AS duty
+	,usr10.titleCd
+	,usr10.sawonNo
+	,IFNULL(usr11.field25,'''') AS pictureUrl
+	,IFNULL(usr10.position,'''') AS position
+	,IFNULL(usr10.email,'''') AS email
+	,IFNULL(usr10.MOBILE_PHONE,'''') AS mobile
+	,IFNULL(usr10.OFFICE_PHONE,'''') AS office
+	,IFNULL(usr10.HOME_PHONE,'''') AS home
+	,usr11.LASTMODFIYHS
+	,CASE WHEN fvt.id IS NULL THEN ''N'' ELSE ''Y'' END AS isFavorite
+	,CASE WHEN inst.userIdnfr IS NULL THEN ''N'' ELSE ''Y'' END AS isInstalled
+	,CASE WHEN fvt.id IS NULL THEN -1 ELSE fvt.id END AS favoriteId
+	,usr10.dispOrder
+	,grp11.groupIdnfr
+	,(SELECT name FROM mPMS_USER_GROUP10 WHERE groupIdnfr=grp11.groupIdnfr AND regiStusDstcd=''10'') AS parentName
+	,CASE WHEN usr10.titleCd='''' OR usr10.titleCd IS NULL THEN ''100'' END AS orderTitleCd,usr10.positionCd
+');
+		IF i_GROUPCOCD = 'tion' THEN
+			SET i_FROM= CONCAT('FROM mPMS_USER_GROUP10 grp10
+	INNER JOIN mPMS_USER_GROUP11 grp11 ON (grp10.groupIdnfr=grp11.groupIdnfr)
+	INNER JOIN mPMS_USER_INFO10 usr10 ON (usr10.userIdnfr=grp11.userIdnfr AND usr10.regiStusDstcd IN (''10'',''40''))
+	LEFT OUTER JOIN mPMS_USER_INFO11 usr11 ON (usr11.sawonNo=usr10.sawonNo AND usr11.groupCoCd=usr10.groupCoCd)
+	LEFT OUTER JOIN mPBT_P2P_Favorite_Info fvt ON (usr10.userIdnfr=fvt.groupOrUsrIdnfr AND fvt.owner='
+	, CONVERT(in_USERIDNFR, CHAR(18))
+	,' AND fvt.type=''U'')
+	LEFT OUTER JOIN mPBT_App_Installation_Info inst ON (inst.userIdnfr=usr10.userIdnfr)
+');
+		ELSE
+			SET i_FROM= CONCAT('FROM mPMS_USER_GROUP10 grp10
+	INNER JOIN mPMS_USER_GROUP11 grp11 ON (grp10.groupIdnfr=grp11.groupIdnfr)
+	INNER JOIN mPMS_USER_INFO10 usr10 ON (usr10.userIdnfr=grp11.userIdnfr AND usr10.regiStusDstcd IN (''10'',''40''))
+	INNER JOIN mPMS_COM_CODE20 com20 ON com20.cd = grp10.groupCoCd AND com20.cdGroup = ''GRP001'' AND com20.locale = ''ko_KR''
+	LEFT OUTER JOIN mPMS_USER_INFO11 usr11 ON (usr11.sawonNo=usr10.sawonNo AND usr11.groupCoCd=usr10.groupCoCd)
+	LEFT OUTER JOIN mPBT_P2P_Favorite_Info fvt ON (usr10.userIdnfr=fvt.groupOrUsrIdnfr AND fvt.owner='
+	, CONVERT(in_USERIDNFR, CHAR(18))
+	,' AND fvt.type=''U'')
+	LEFT OUTER JOIN mPBT_App_Installation_Info inst ON (inst.userIdnfr=usr10.userIdnfr)
+');
+		END IF;
+		IF LENGTH(in_DEPT_NAME) > 2 then
+			SET i_FROM= CONCAT(i_FROM, '	INNER JOIN mPMS_USER_GROUP10 gr10 ON grp10.path like CONCAT(''%\_'',gr10.groupIdnfr,''|%'')
+');
+		END IF;
+		SET i_WHERE=CONCAT('WHERE grp10.regiStusDstcd=''10''
+	AND usr10.userIdnfr<>', CONVERT(in_USERIDNFR, CHAR(18)),' ');
+		SET i_WHERE=CONCAT(i_WHERE, '	AND usr10.groupCoCd=''',i_GROUPCOCD,'''');
+		IF in_KEYWORD='실본부보고' THEN
+			SET i_WHERE=CONCAT(i_WHERE, '	-- 실본부보고');
+		ELSEIF in_KEYWORD='실장이상' THEN
+			SET i_WHERE=CONCAT(i_WHERE,	'	-- 실장이상');
+		ELSE
+			IF LENGTH(in_DEPT_NAME) > 2 THEN
+				SET @SUB_TREE_COND = CONCAT('
+	OR gr10.name like ''%', in_DEPT_NAME, '%''');
+			ELSE 
+				SET @SUB_TREE_COND = '';
+			END IF;
+			IF in_KEYWORD != '/All/' THEN
+				IF i_PROC_CHO='Y' THEN
+					SET i_WHERE=CONCAT(i_WHERE,'
+	AND usr10.name LIKE ''%', in_KEYWORD, '%''');
+				ELSE
+					IF i_CHECK_ENG = 'Y' THEN
+						SET i_WHERE=CONCAT(i_WHERE,'
+	AND (grp10.name like ''%',in_DEPT_NAME, '%''',@SUB_TREE_COND,'
+	)
+	AND usr11.field15 LIKE ''%', in_KEYWORD, '%''');
+					ELSE
+						SET i_WHERE=CONCAT(i_WHERE,'
+	AND (grp10.name like ''%',in_DEPT_NAME,'%''',@SUB_TREE_COND,'
+	)
+	AND ( usr10.name LIKE ''%',in_KEYWORD,'%''
+		OR usr10.email LIKE ''%',in_KEYWORD,'%''
+		OR REPLACE(usr10.deptName,'' '', '''') LIKE ''%',REPLACE(in_KEYWORD,'', ''),'%''
+		OR usr10.position LIKE ''%',in_KEYWORD,'%''
+		OR usr11.field10 LIKE ''%',in_KEYWORD,'%''
+		OR REPLACE(usr10.MOBILE_PHONE,''-'','''') LIKE ''%',REPLACE( in_KEYWORD,'-', '' ),'%'')');
+					END IF;
+				END IF;
+			ELSE 
+				SET i_WHERE=CONCAT(i_WHERE,'
+	AND (grp10.name like ''%',in_DEPT_NAME, '%''',@SUB_TREE_COND,'
+	)');
+			END	IF;
+		END IF;
+		IF LENGTH(RTRIM(in_ORDER)) < 10 THEN
+			SET in_ORDER='
+ORDER BY orderTitleCd ASC, usr10.titleCd, usr10.positionCd, usr10.name';
+		END IF;
+	ELSEIF in_SERVICE_CD='CUBE' THEN
+			SET i_SELECT='';
+	END	IF;
+	SET @SQL = CONCAT(i_SELECT, i_FROM, i_WHERE, in_ORDER);
+		
+
+	prepare stmt1 from @SQL;
+	execute stmt1;
+	deallocate prepare stmt1;
+END$$
+DELIMITER ;
