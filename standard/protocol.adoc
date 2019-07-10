@@ -214,6 +214,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
   "sub-type": "SMS/MMS",
   "sms": [
     {
+      "mobile": "010-1111-2222",
       "result": true,
       "receiver": {
         "name": "이름 또는 전화번호",
@@ -226,13 +227,14 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
       "unread-count": 11
     },
     {
+      "mobile": "010-1111-2222",
+      "result": false,
       "receiver": {
         "name": "이름 또는 전화번호",
         "position": "과장",
         "dept-name": "개발1팀",
         "upper-dept-name": "개발실"
       },
-      "result": false,
       "room-id": 222,
       "message-id": 11,
       "unread-count": 11
