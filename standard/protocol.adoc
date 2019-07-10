@@ -213,50 +213,40 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
   "type": "OUT_SMS_MMS_RESULT",
   "sub-type": "SMS/MMS",
   "temp-id": "xxxxxx",
-  "sms": [
-    {
-      "mobile": "010-1111-2222",
-      "result": true,
-      "receiver": {
-        "name": "이름 또는 전화번호",
-        "position": "과장",
-        "dept-name": "개발1팀",
-        "upper-dept-name": "개발실"
-      },
-      "room-id": 222,
-      "message-id": 11,
-      "unread-count": 11
-    },
-    {
-      "mobile": "010-1111-2222",
-      "result": false,
-      "receiver": {
-        "name": "이름 또는 전화번호",
-        "position": "과장",
-        "dept-name": "개발1팀",
-        "upper-dept-name": "개발실"
-      },
-      "room-id": 222,
-      "message-id": 11,
-      "unread-count": 11
-    }
-  ],
-  "mms": {
-    "result": true,
-    "receivers": [
+  "receivers": [
       {
+        "mobile" : "010-xxxx-yyyy",
         "name": "이름 또는 전화번호",
         "position": "과장",
         "dept-name": "개발1팀",
         "upper-dept-name": "개발실"
       },
       {
+        "mobile" : "010-xxxx-yyyy",
         "name": "이름 또는 전화번호",
         "position": "과장",
         "dept-name": "개발1팀",
         "upper-dept-name": "개발실"
       }
     ],
+  "sms": [
+    {
+      "receiver": "010-1111-2222",
+      "result": true,
+      "room-id": 222,
+      "message-id": 11,
+      "unread-count": 1
+    },
+    {
+      "receiver": "010-1111-2222",
+        "result": true,
+        "room-id": 222,
+        "message-id": 11,
+        "unread-count": 1
+    }
+  ],
+  "mms": {
+    "result": true,
     "room-id": 222,
     "message-id": 11,
     "unread-count": 11
