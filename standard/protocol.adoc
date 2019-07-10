@@ -2,6 +2,7 @@
 by Shin Kwan Young;
 
 == SMS 전송
+OUT_SMS (PC -> Server)
 [source, json]
 ----
 {
