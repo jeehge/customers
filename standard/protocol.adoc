@@ -40,3 +40,71 @@ by Shin Kwan Young;
   "text": "SMS 문자 내용"
 }
 ----
+
+== MMS 전송 요청 (PC -> Server)
+[source, json]
+----
+{
+  "server": {
+    "type": "OUT_MMS",
+    "receivers": [
+      {
+        "mobile": "010-1111-2222"
+      },
+      {
+        "mobile": "010-3333-4444"
+      }
+    ],
+    "body-parts": [
+      {
+        "part-id": 1,
+        "mime-type": "xxxx/yyyy",
+        "text": "MMS 문자 내용",
+        "file-id": 1
+      },
+      {
+        "part-id": 2,
+        "mime-type": "xxxx/yyyy",
+        "text": "MMS 문자 내용",
+        "file-id": 2
+      }
+    ]
+  },
+  "client": {
+    "temp-id": "xxxxxx",
+    "subject": "MMS 제목"
+  }
+}
+----
+
+== MMS 전송 요청 Push Payload (Server -> Android)
+[source, json]
+----
+{
+  "type": "OUT_MMS",
+  "receivers": [
+    {
+      "mobile": "010-1111-2222"
+    },
+    {
+      "mobile": "010-3333-4444"
+    }
+  ],
+  "temp-id": "xxxxxx",
+  "subject": "MMS 제목"
+  "body-parts": [
+    {
+      "part-id": 1,
+      "mime-type": "xxxx/yyyy",
+      "text": "MMS 문자 내용",
+      "file-url": "http://x.y.z/a/b/c"
+    },
+    {
+      "part-id": 2,
+      "mime-type": "xxxx/yyyy",
+      "text": "MMS 문자 내용",
+      "file-url": "http://x.y.z/a/b/c"
+    }
+  ]
+}
+----
