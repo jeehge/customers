@@ -1,7 +1,7 @@
 = SMS/MMS 대화방 Protocol
 by Shin Kwan Young;
 
-== SMS 전송 (PC -> Server)
+== SMS 전송 요청 (PC -> Server)
 [source, json]
 ----
 {
@@ -22,71 +22,21 @@ by Shin Kwan Young;
   }
 }
 ----
-== Configure Environment Variable
-ERLANG_HOME = C:\Program Files\erl10.1
 
-== Configure Plugins
-
-C:..\> rabbitmq-plugins enable rabbitmq_management (관리콘솔 활성화) +
-   http://localhost:15672/ (guest/guest) +
-C:..\> rabbitmq-plugins enable rabbitmq_mqtt (MQTT 활성화) +
-
-== Configure Port, Authentication, Etc
-C:\Users\Administrator\AppData\Roaming\RabbitMQ\advanced.config +
-
-[{rabbit,        [{loopback_users, []},{tcp_listeners,    [5672]}]},
-{rabbitmq_mqtt, [{allow_anonymous, true}
-,{default_user, "guest"}
-,{default_pass, "guest"}
-, {tcp_listeners,    [1887]}]}
-]. +
-
-[{rabbit,        [{loopback_users, []},{tcp_listeners,    [{"ip",5672}]}]},
-{rabbitmq_mqtt, [{allow_anonymous, true}
-,{default_user, "guest"}
-,{default_pass, "guest"}
-, {tcp_listeners,    [{"ip",1887}]}]}
-]. +
-
-== Run and Stop RabbitMQ
-
-cd C:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin +
-
-C:..\> rabbitmq-service start +
-C:..\> rabbitmq-service stop +
-
-= Installation and Configuration of RabbitMQ on Ubuntu
-
-> sudo apt-get update
-> sudo apt-get install erlang
-> which erlc
-
-> sudo apt-get install rabbitmq-server
-> sudo rabbitmq-plugins enable rabbitmq_management
-> sudo rabbitmq-plugins enable rabbitmq_mqtt
-> sudo service rabbitmq-server restart
-> sudo rabbitmqctl add_user rednics sky0814
-> sudo rabbitmqctl set_user_tags rednics administrator
-> vi /etc/rabbitmq/rabbitmq.config
-
-[{rabbit,        [{loopback_users, []},{tcp_listeners,    [5672]}]},
-{rabbitmq_mqtt, [{allow_anonymous, true}
-,{default_user, "guest"}
-,{default_pass, "guest"}
-, {tcp_listeners,    [1887]}]}
-].
-
- http://10.1.3.91:15672/#/users 접속 > Admin > Users > guest 클릭 > Set permission 버튼 클릭
-
-
-[rpm forget 설치]
-> uname -i
-  확인된 정보에 맞는 rpm 을 아래 사이트에서 다운로드 받는다.
-> https://rpmfind.net/linux/rpm2html/search.php?query=rpmforge-release
-> rpm -ivh rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-> rpm -qa | grep rpmforge-release
-> yum repolist
-> yum -y update
-
-[apt 설치]
-> yum list apt
+== SMS 전송 요청 Push Payload (Server -> Android)
+[source, json]
+----
+{
+  "type": "OUT_SMS",
+  "receivers": [
+    {
+      "mobile": "010-1111-2222"
+    },
+    {
+      "mobile": "010-3333-4444"
+    }
+  ],
+  "temp-id": "xxxxxx",
+  "text": "SMS 문자 내용"
+}
+----
