@@ -1,5 +1,5 @@
-= SMS/MMS 대화 프로토골 정의
-by 신관영;
+= Installation and Configuration of RabbitMQ on Windows
+by Shin Kwan Young;
 
 == Prerequisite
 참고 : 참고 : http://blog.moramcnt.com/?p=1156 +
