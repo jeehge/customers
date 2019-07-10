@@ -91,7 +91,7 @@ by Shin Kwan Young;
     }
   ],
   "temp-id": "xxxxxx",
-  "subject": "MMS 제목"
+  "subject": "MMS 제목",
   "body-parts": [
     {
       "part-id": 1,
