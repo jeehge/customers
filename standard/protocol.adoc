@@ -1,8 +1,7 @@
 = SMS/MMS 대화방 Protocol
 by Shin Kwan Young;
 
-== SMS 전송
-OUT_SMS (PC -> Server)
+== SMS 전송 (PC -> Server)
 [source, json]
 ----
 {
