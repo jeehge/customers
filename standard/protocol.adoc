@@ -164,7 +164,7 @@ by Shin Kwan Young;
 ----
 {
   "type": "OUT_SMS_MMS_RESULT",
-  "sub-type": "SMS/MMS"
+  "sub-type": "SMS/MMS",
   "sms": [
     {
       "result": true,
