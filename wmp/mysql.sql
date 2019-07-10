@@ -151,3 +151,38 @@ select count(*) from mpps_push_device_success where reg_dt between '2019-01-22' 
  
 select right(ppc_push_key, 1) as os, count(*) from mpps_push_key_map 
 group by right(ppc_push_key, 1)
+-----------------------------------------------------------------------------	
+[linux 방화벽 관련]
+-----------------------------------------------------------------------------
+> vi /etc/sysconfig/iptables
+# Firewall configuration written by system-config-firewall
+# Manual customization of this file is not recommended.
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 14000 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 39080 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 61616 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 15000 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 18000 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 30000 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 30500 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 31000 -j ACCEPT
+
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 9091 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 9092 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 9093 -j ACCEPT
+
+
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+ 
+>  service iptables restart
+>  iptables -nL
+
