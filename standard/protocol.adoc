@@ -1,11 +1,18 @@
 = SMS/MMS 대화방 Protocol
 by Shin Kwan Young;
 
-== Prerequisite
-참고 : 참고 : http://blog.moramcnt.com/?p=1156 +
-ErLang : tp_win64_21.1.exe +
-RabbitMQ : rabbitmq-server-3.7.9.exe
-
+== SMS 전송
+[source, xml]
+----
+    <body name="CMPUSHKEY">
+        <request>
+            <field name="pcPushKey" type="string"/>
+            <field name="apnsPushKey" type="string"/>
+            <field name="gcmPushKey" type="string"/>
+            <field name="extJsonStr" type="string"/>
+        </request>
+    </body>
+----
 == Configure Environment Variable
 ERLANG_HOME = C:\Program Files\erl10.1
 
