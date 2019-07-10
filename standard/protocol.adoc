@@ -333,7 +333,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 }
 ----
 
-== (Android -> Server)
+== SMS/MMS 싱크 요청 (Android -> Server)
 [source, json]
 ----
 {
