@@ -234,7 +234,7 @@ by Shin Kwan Young;
 }
 ----
 
-== SMS 수신 Push Payload (Server -> Android)
+== SMS 수신 Push Payload (Server -> PC)
 [source, json]
 ----
 {
@@ -249,5 +249,71 @@ by Shin Kwan Young;
   "room-unread-count": 11,
   "message-id": 11,
   "text": "SMS 문자 내용"
+}
+----
+
+== MMS 수신 요청 (Android -> Server)
+[source, json]
+----
+{
+  "server": {
+    "type": "IN_MMS",
+    "sender": {
+      "mobile": "010-1111-2222",
+      "name": "홍길동"
+    },
+    "body-parts": [
+      {
+        "part-id": 1,
+        "mime-type": "xxxx/yyyy",
+        "text": "MMS 문자 내용",
+        "file-id": 1
+      },
+      {
+        "part-id": 2,
+        "mime-type": "xxxx/yyyy",
+        "text": "MMS 문자 내용",
+        "file-id": 2
+      }
+    ]
+  },
+  "client": {
+    "room-id": 222,
+    "room-unread-count": 11,
+    "message-id": 11,
+    "subject": "SMS 문자 내용"
+  }
+}
+----
+
+== MMS 수신 Push Payload (Server -> PC)
+[source, json]
+----
+{
+  "type": "IN_MMS",
+  "sender": {
+    "name": "홍길동",
+    "position": "과장",
+    "dept-name": "개발1팀",
+    "upper-dept-name": "개발실"
+  },
+  "body-parts": [
+    {
+      "part-id": 1,
+      "mime-type": "xxxx/yyyy",
+      "text": "MMS 문자 내용",
+      "file-url": "http://x.y.z/a/b/c"
+    },
+    {
+      "part-id": 2,
+      "mime-type": "xxxx/yyyy",
+      "text": "MMS 문자 내용",
+      "file-url": "http://x.y.z/a/b/c"
+    }
+  ],
+  "room-id": 222,
+  "room-unread-count": 11,
+  "message-id": 11,
+  "subject": "SMS 문자 내용"
 }
 ----
