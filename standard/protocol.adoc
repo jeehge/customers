@@ -402,7 +402,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 {
   "server": {
     "type": "ON_OFF_SMS_MMS",
-    "on-off": true
+    "on": true
   }
 }
 ----
@@ -418,6 +418,6 @@ header 의 status 에 설정
 ----
 {
   "type": "ON_OFF_SMS_MMS",
-  "on-off": true
+  "on": true
 }
 ----
