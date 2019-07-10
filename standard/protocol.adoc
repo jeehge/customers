@@ -1,4 +1,4 @@
-= Installation and Configuration of RabbitMQ on Windows
+= SMS/MMS 대화방 Protocol
 by Shin Kwan Young;
 
 == Prerequisite
