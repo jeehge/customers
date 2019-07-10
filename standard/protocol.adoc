@@ -108,3 +108,108 @@ by Shin Kwan Young;
   ]
 }
 ----
+
+== SMS/MMS 전송 결과 (Android -> Server)
+[source, json]
+----
+{
+  "server": {
+    "type": "OUT_SMS_MMS_RESULT",
+    "receivers": [
+      {
+        "mobile": "010-1111-2222",
+        "name": "홍길동1"
+      },
+      {
+        "mobile": "010-1111-2223",
+        "name": "홍길동2"
+      },
+      {
+        "mobile": "010-1111-2224",
+        "name": ""
+      }
+    ]
+  },
+  "client": {
+    "sub-type": "SMS/MMS",
+    "temp-id": "xxxxxx",
+    "sms": [
+      {
+        "receiver": "010-1111-2222",
+        "result": true,
+        "room-id": 222,
+        "message-id": 11,
+        "unread-count": 1
+      },
+      {
+        "receiver": "010-1111-2222",
+        "result": false,
+        "room-id": 223,
+        "message-id": 22,
+        "unread-count": 1
+      }
+    ],
+    "mms": {
+      "result": true,
+      "room-id": 222,
+      "message-id": 11,
+      "unread-count": 11
+    }
+  }
+}
+----
+
+== SMS/MMS 전송 결과 Push Payload (Server -> PC)
+[source, json]
+----
+{
+  "type": "OUT_SMS_MMS_RESULT",
+  "sub-type": "SMS/MMS"
+  "sms": [
+    {
+      "result": true,
+      "receiver": {
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      },
+      "room-id": 222,
+      "message-id": 11,
+      "unread-count": 11
+    },
+    {
+      "receiver": {
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      },
+      "result": false,
+      "room-id": 222,
+      "message-id": 11,
+      "unread-count": 11
+    }
+  ],
+  "mms": {
+    "result": true,
+    "receivers": [
+      {
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      },
+      {
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      }
+    ],
+    "room-id": 222,
+    "message-id": 11,
+    "unread-count": 11
+  }
+}
+----
