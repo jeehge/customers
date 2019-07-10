@@ -2,16 +2,25 @@
 by Shin Kwan Young;
 
 == SMS 전송
-[source, xml]
+[source, json]
 ----
-    <body name="CMPUSHKEY">
-        <request>
-            <field name="pcPushKey" type="string"/>
-            <field name="apnsPushKey" type="string"/>
-            <field name="gcmPushKey" type="string"/>
-            <field name="extJsonStr" type="string"/>
-        </request>
-    </body>
+{
+  "server": {
+    "type": "OUT_SMS",
+    "receivers": [
+      {
+        "mobile": "010-1111-2222"
+      },
+      {
+        "mobile": "010-3333-4444"
+      }
+    ]
+  },
+  "client": {
+    "temp-id": "xxxxxx",
+    "text": "SMS 문자 내용"
+  }
+}
 ----
 == Configure Environment Variable
 ERLANG_HOME = C:\Program Files\erl10.1
