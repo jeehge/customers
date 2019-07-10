@@ -317,3 +317,58 @@ by Shin Kwan Young;
   "subject": "MMS 제목"
 }
 ----
+
+== SMS/MMS 싱크 요청 (Android -> Server)
+[source, json]
+----
+{
+{
+  "server": {
+    "type": "SYNC_SMS_MMS"
+  },
+  "client": {
+    "sub-type": "READ/ROOM_DEL/MESSAGE_DEL",
+    "room-id": 222,
+    "room-unread-count": 11,
+    "message-id": 11
+  }
+}
+----
+
+== SMS/MMS 싱크 요청 Push Payload (Server -> PC)
+[source, json]
+----
+{
+  "type": "SYNC_SMS_MMS",
+  "sub-type": "READ/ROOM_DEL/MESSAGE_DEL",
+  "room-id": 222,
+  "room-unread-count": 11,
+  "message-id": 11
+}
+----
+
+== SMS/MMS 대화방 동기화 ON/OFF 요청 (Android -> Server)
+[source, json]
+----
+{
+  "server": {
+    "type": "ON_OFF_SMS_MMS",
+    "on-off": true
+  }
+}
+----
+
+== SMS/MMS 대화방 동기화 ON/OFF 응답 (Server <- Android)
+
+SMS/MMS 대화방 동기화 ON/OFF 요청에 대한 응답결과는
+header 의 status 에 설정
+
+== SMS/MMS 대화방 동기화 ON/OFF Push Payload (Server -> PC)
+
+[source, json]
+----
+{
+  "type": "ON_OFF_SMS_MMS",
+  "on-off": true
+}
+----
