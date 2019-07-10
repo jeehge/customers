@@ -281,7 +281,7 @@ by Shin Kwan Young;
     "room-id": 222,
     "room-unread-count": 11,
     "message-id": 11,
-    "subject": "SMS 문자 내용"
+    "subject": "MMS 제목"
   }
 }
 ----
@@ -314,6 +314,6 @@ by Shin Kwan Young;
   "room-id": 222,
   "room-unread-count": 11,
   "message-id": 11,
-  "subject": "SMS 문자 내용"
+  "subject": "MMS 제목"
 }
 ----
