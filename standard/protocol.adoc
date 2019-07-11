@@ -505,4 +505,7 @@ COMM.CMLOGIN01 응답전문 body 의 extJsonStr 필드의 JSON 항목에 다음�
 }
 ----
 
+iOS에서 로그인시 PC Client 로  "ON_OFF_SMS_MMS" push 가 전송됨
+
+
 
