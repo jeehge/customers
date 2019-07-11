@@ -48,7 +48,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ----
 
 
-== SMS 전송 요청 정보 (PC, Android -> Server)
+== SMS 전송 요청 정보 (PC -> Server)
 [source, json]
 ----
 {
@@ -70,13 +70,9 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
+== SMS 전송 요청 정보 Push Payload (Server -> Android)
 
- 
-
-
-== SMS 전송 요청 정보 Push Payload (Server -> Android, PC)
-
-[source, json] - Android 용
+[source, json]
 ----
 {
   "type": "OUT_SMS",
@@ -88,31 +84,6 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
       "mobile": "010-3333-4444"
     }
   ],
-  "temp-id": "xxxxxx",
-  "text": "SMS 문자 내용"
-}
-----
-
-[source, json] - PC 용
-----
-{
-  "type": "OUT_SMS",
-  "receivers": [
-      {
-        "mobile" : "010-xxxx-yyyy",
-        "name": "이름 또는 전화번호",
-        "position": "과장",
-        "dept-name": "개발1팀",
-        "upper-dept-name": "개발실"
-      },
-      {
-        "mobile" : "010-xxxx-yyyy",
-        "name": "이름 또는 전화번호",
-        "position": "과장",
-        "dept-name": "개발1팀",
-        "upper-dept-name": "개발실"
-      }
-    ],
   "temp-id": "xxxxxx",
   "text": "SMS 문자 내용"
 }
@@ -157,7 +128,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
     
 == MMS 전송 요청 Push Payload (Server -> Android)
 
-[source, json] - Android 용
+[source, json]
 ----
 {
   "type": "OUT_MMS",
@@ -169,45 +140,6 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
       "mobile": "010-3333-4444"
     }
   ],
-  "temp-id": "xxxxxx",
-  "subject": "MMS 제목",
-  "body-parts": [
-    {
-      "part-id": 1,
-      "mime-type": "xxxx/yyyy",
-      "text": "MMS 문자 내용",
-      "file-url": "http://x.y.z/a/b/c"
-    },
-    {
-      "part-id": 2,
-      "mime-type": "xxxx/yyyy",
-      "text": "MMS 문자 내용",
-      "file-url": "http://x.y.z/a/b/c"
-    }
-  ]
-}
-----
-
-[source, json] - PC 용
-----
-{
-  "type": "OUT_MMS",
-  "receivers": [
-      {
-        "mobile" : "010-xxxx-yyyy",
-        "name": "이름 또는 전화번호",
-        "position": "과장",
-        "dept-name": "개발1팀",
-        "upper-dept-name": "개발실"
-      },
-      {
-        "mobile" : "010-xxxx-yyyy",
-        "name": "이름 또는 전화번호",
-        "position": "과장",
-        "dept-name": "개발1팀",
-        "upper-dept-name": "개발실"
-      }
-    ],
   "temp-id": "xxxxxx",
   "subject": "MMS 제목",
   "body-parts": [
@@ -325,18 +257,20 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== SMS 수신 요청 (Android -> Server)
+== 신규 SMS Sync 요청 (Android -> Server)
+
 [source, json]
 ----
 {
   "server": {
-    "type": "IN_SMS",
+    "type": "SYNC_SMS",
     "sender": {
       "mobile": "010-1111-2222",
       "name": "홍길동"
     }
   },
   "client": {
+    "box" : "IN/OUT",
     "room-id": 222,
     "room-unread-count": 11,
     "message-id": 11,
@@ -345,17 +279,19 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== SMS 수신 Push Payload (Server -> PC)
+== 신규 SMS Sync 요청 Push Payload (Server -> PC)
+
 [source, json]
 ----
 {
-  "type": "IN_SMS",
+  "type": "SYNC_SMS",
   "sender": {
     "name": "홍길동",
     "position": "과장",
     "dept-name": "개발1팀",
     "upper-dept-name": "개발실"
   },
+  "box": "IN/OUT",
   "room-id": 222,
   "room-unread-count": 11,
   "message-id": 11,
@@ -363,12 +299,13 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== MMS 수신 요청 (Android -> Server)
+== 신규 MMS Sync 요청 (Android -> Server)
+
 [source, json]
 ----
 {
   "server": {
-    "type": "IN_MMS",
+    "type": "SYNC_MMS",
     "sender": {
       "mobile": "010-1111-2222",
       "name": "홍길동"
@@ -389,6 +326,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
     ]
   },
   "client": {
+    "box" : "IN/OUT",
     "room-id": 222,
     "room-unread-count": 11,
     "message-id": 11,
@@ -397,11 +335,12 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== MMS 수신 Push Payload (Server -> PC)
+== 신규 MMS Sync 요청 Push Payload (Server -> PC)
+
 [source, json]
 ----
 {
-  "type": "IN_MMS",
+  "type": "SYNC_MMS",
   "sender": {
     "name": "홍길동",
     "position": "과장",
@@ -422,6 +361,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
       "file-url": "http://x.y.z/a/b/c"
     }
   ],
+  "box" : "IN/OUT",
   "room-id": 222,
   "room-unread-count": 11,
   "message-id": 11,
@@ -429,7 +369,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== SMS/MMS 싱크 요청 (Android -> Server)
+== 기존 SMS/MMS 싱크 요청 (Android -> Server)
 [source, json]
 ----
 {
