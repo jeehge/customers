@@ -264,7 +264,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 {
   "server": {
     "type": "SYNC_SMS",
-    "sender": {
+    "sender-or-receiver": {
       "mobile": "010-1111-2222",
       "name": "홍길동"
     }
@@ -285,7 +285,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ----
 {
   "type": "SYNC_SMS",
-  "sender": {
+  "sender-or-receiver": {
     "name": "홍길동",
     "position": "과장",
     "dept-name": "개발1팀",
@@ -306,7 +306,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 {
   "server": {
     "type": "SYNC_MMS",
-    "sender": {
+    "sender-or-receiver": {
       "mobile": "010-1111-2222",
       "name": "홍길동"
     },
@@ -341,7 +341,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ----
 {
   "type": "SYNC_MMS",
-  "sender": {
+  "sender-or-receiver": {
     "name": "홍길동",
     "position": "과장",
     "dept-name": "개발1팀",
