@@ -70,8 +70,13 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
+
+ 
+
+
 == SMS 전송 요청 정보 Push Payload (Server -> Android, PC)
-[source, json]
+
+[source, json] - Android 용
 ----
 {
   "type": "OUT_SMS",
@@ -88,7 +93,33 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
+[source, json] - PC 용
+----
+{
+  "type": "OUT_SMS",
+  "receivers": [
+      {
+        "mobile" : "010-xxxx-yyyy",
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      },
+      {
+        "mobile" : "010-xxxx-yyyy",
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      }
+    ],
+  "temp-id": "xxxxxx",
+  "text": "SMS 문자 내용"
+}
+----
+
 == MMS 전송 요청 (PC -> Server)
+
 [source, json]
 ----
 {
@@ -123,9 +154,10 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
   }
 }
 ----
-
+    
 == MMS 전송 요청 Push Payload (Server -> Android)
-[source, json]
+
+[source, json] - Android 용
 ----
 {
   "type": "OUT_MMS",
@@ -137,6 +169,45 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
       "mobile": "010-3333-4444"
     }
   ],
+  "temp-id": "xxxxxx",
+  "subject": "MMS 제목",
+  "body-parts": [
+    {
+      "part-id": 1,
+      "mime-type": "xxxx/yyyy",
+      "text": "MMS 문자 내용",
+      "file-url": "http://x.y.z/a/b/c"
+    },
+    {
+      "part-id": 2,
+      "mime-type": "xxxx/yyyy",
+      "text": "MMS 문자 내용",
+      "file-url": "http://x.y.z/a/b/c"
+    }
+  ]
+}
+----
+
+[source, json] - PC 용
+----
+{
+  "type": "OUT_MMS",
+  "receivers": [
+      {
+        "mobile" : "010-xxxx-yyyy",
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      },
+      {
+        "mobile" : "010-xxxx-yyyy",
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      }
+    ],
   "temp-id": "xxxxxx",
   "subject": "MMS 제목",
   "body-parts": [
