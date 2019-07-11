@@ -473,6 +473,8 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 SMS/MMS 대화방 동기화 ON/OFF 요청에 대한 응답결과는
 header 의 status 에 설정
 
+응답 header의 status 가 0 인 경우에만 UI 상에 On 으로 변경처리해야 함
+
 == SMS/MMS 대화방 동기화 ON/OFF Push Payload (Server -> PC)
 
 [source, json]
@@ -486,6 +488,14 @@ header 의 status 에 설정
 == 로그인 시, COMM.CMLOGIN01 응답에 sms-mms 대화방 On/Off 설정정보 추가
 
 COMM.CMLOGIN01 응답전문 body 의 extJsonStr 필드의 JSON 항목에 다음과 같이 제공함
+
+(header.status)
+
+1 : PC가 로그인되어 있지 않음
+
+9998 : Push 실패 
+
+9999 : 알 수 없는 오류
 
 [source, json]
 ----
