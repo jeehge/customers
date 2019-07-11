@@ -48,7 +48,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ----
 
 
-== SMS 전송 요청 (PC -> Server)
+== SMS 전송 요청 정보 (PC, Android -> Server)
 [source, json]
 ----
 {
@@ -70,7 +70,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== SMS 전송 요청 Push Payload (Server -> Android)
+== SMS 전송 요청 정보 Push Payload (Server -> Android, PC)
 [source, json]
 ----
 {
