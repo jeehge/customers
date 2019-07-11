@@ -411,3 +411,17 @@ header 의 status 에 설정
   "on": true
 }
 ----
+
+== 로그인 시, COMM.CMLOGIN01 응답에 sms-mms 대화방 On/Off 설정정보 추가
+
+COMM.CMLOGIN01 응답전문 body 의 extJsonStr 필드의 JSON 항목에 다음과 같이 제공함
+
+[source, json]
+----
+{
+    ..........., 
+    "on-off-sms-mms" : true/false, 
+    .........
+}
+----
+
