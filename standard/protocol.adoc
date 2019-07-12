@@ -1,5 +1,11 @@
 = SMS/MMS 대화방 Protocol
 by Shin Kwan Young;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
 
 == 전문 (PC/Android -> Server)
 
