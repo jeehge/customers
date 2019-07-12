@@ -164,7 +164,10 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== SMS/MMS 전송 결과 (Android -> Server)
+== SMS/MMS 전송 결과
+
+■ 요청 : Android -> Server
+
 [source, json]
 ----
 {
@@ -214,7 +217,8 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== SMS/MMS 전송 결과 Push Payload (Server -> PC)
+■ Push Payload : Server -> PC
+
 [source, json]
 ----
 {
@@ -262,7 +266,9 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== 신규 SMS Sync 요청 (Android -> Server)
+== SMS Sync 
+
+■ 요청 : Android -> Server
 
 [source, json]
 ----
@@ -284,7 +290,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== 신규 SMS Sync 요청 Push Payload (Server -> PC)
+■ Push Payload : Server -> PC
 
 [source, json]
 ----
@@ -304,7 +310,9 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== 신규 MMS Sync 요청 (Android -> Server)
+== MMS Sync 
+
+■ 요청 : Android -> Server
 
 [source, json]
 ----
@@ -340,7 +348,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== 신규 MMS Sync 요청 Push Payload (Server -> PC)
+■ Push Payload : Server -> PC
 
 [source, json]
 ----
