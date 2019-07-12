@@ -358,7 +358,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== SMS/MMS 발송 결과
+== SMS/MMS 발송결과 전달요청
 
 ■ 요청 : Android -> Server
 
@@ -460,7 +460,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== Android-Originated SMS/MMS Sync 
+== SMS/MMS Sync 요청
 
 ■ 요청 : Android -> Server
 
