@@ -47,6 +47,60 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
+== Case 별 전문 및 Push Payload Flow 개요
+
+----
+[1] PC에서 SMS 전송
+
+PC-Originated SMS Sync 요청(by PC) 
+-> Server
+-> PC-Originated SMS Sync Push Payload 수신(by Android)
+-> PC-Originated SMS/MMS Result 요청(by Android)
+-> Server
+-> PC-Originated SMS/MMS Result Push Payload 수신(by PC)
+
+[2] PC에서 MMS 전송
+
+PC-Originated MMS Sync 요청(by PC) 
+-> Server
+-> PC-Originated MMS Sync Push Payload 수신(by Android)
+-> PC-Originated SMS/MMS Result 요청(by Android)
+-> Server
+-> PC-Originated SMS/MMS Result Push Payload 수신(by PC)
+
+[3] Android에서 SMS 전송
+
+Android-Originated SMS Sync 요청(sub-type=OUT)(by Android)
+-> Server
+-> Android-Originated SMS Sync Push Payload 수신(by PC)
+
+[4] Android에서 SMS 수신
+
+Android-Originated SMS Sync 요청(sub-type=IN)(by Android)
+-> Server
+-> Android-Originated SMS Sync Push Payload 수신(by PC)
+
+[5] Android에서 MMS 전송
+
+Android-Originated MMS Sync 요청(sub-type=OUT)(by Android)
+-> Server
+-> Android-Originated MMS Sync Push Payload 수신(by PC)
+
+[6] Android에서 SMS 수신
+
+Android-Originated MMS Sync 요청(sub-type=IN)(by Android)
+-> Server
+-> Android-Originated MMS Sync Push Payload 수신(by PC)
+
+[7] Android 에서 SMS/MMS Sync 요청
+
+- [1],[2],[3],[4],[5],[6] 이후 Android 에서 
+  대화방 삭제/메시지 삭제/룸 삭제/읽음처리를 위한 용도로 사용함
+  
+Android-Originated SMS/MMS Sync 요청(by Android)
+-> Server 
+-> Android-Originated SMS/MMS Sync Push 수신(by PC)
+----
 
 == PC-Originated SMS Sync
 
