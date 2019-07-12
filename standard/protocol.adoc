@@ -276,10 +276,16 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 {
   "server": {
     "type": "SYNC_SMS",
-    "participants": { // 수신 메시지의 경우, 발송자 목록, 발신 메시지의 경우, 수신자 목록을 의미함
-      "mobile": "010-1111-2222",
-      "name": "홍길동"
-    }
+    "participants": [ // 수신 메시지의 경우, 발송자 목록, 발신 메시지의 경우, 수신자 목록을 의미함
+      {
+        "mobile": "010-1111-2222",
+        "name" : "홍길동1"
+      },
+      {
+        "mobile": "010-1111-3333",
+        "name" : "홍길동2"
+      }
+    ]
   },
   "client": {
     "box" : "IN/OUT",
@@ -297,12 +303,20 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 ----
 {
   "type": "SYNC_SMS",
-  "participants": {
-    "name": "홍길동",
+  "participants": [
+  {
+    "name": "홍길동1",
     "position": "과장",
     "dept-name": "개발1팀",
     "upper-dept-name": "개발실"
   },
+  {
+    "name": "홍길동2",
+    "position": "수석",
+    "dept-name": "개발2팀",
+    "upper-dept-name": "개발실"
+  }
+  ],
   "box": "IN/OUT",
   "room-id": 222,
   "room-unread-count": 11,
@@ -329,10 +343,16 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 {
   "server": {
     "type": "SYNC_MMS",
-    "participants": {
-      "mobile": "010-1111-2222",
-      "name": "홍길동"
-    },
+    "participants": [ // 수신 메시지의 경우, 발송자 목록, 발신 메시지의 경우, 수신자 목록을 의미함
+      {
+        "mobile": "010-1111-2222",
+        "name" : "홍길동1"
+      },
+      {
+        "mobile": "010-1111-3333",
+        "name" : "홍길동2"
+      }
+    ],
     "body-parts": [
       {
         "part-id": 1,
@@ -364,12 +384,20 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 ----
 {
   "type": "SYNC_MMS",
-  "participants": {
-    "name": "홍길동",
+  "participants": [
+  {
+    "name": "홍길동1",
     "position": "과장",
     "dept-name": "개발1팀",
     "upper-dept-name": "개발실"
   },
+  {
+    "name": "홍길동2",
+    "position": "수석",
+    "dept-name": "개발2팀",
+    "upper-dept-name": "개발실"
+  }
+  ],
   "body-parts": [
     {
       "part-id": 1,
