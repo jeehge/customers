@@ -24,22 +24,22 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 
 == 요청을 위한 JSON Payload 의 기본구조
 
-server 필드는 서버에서 참조하는 정보.
+  - "server" 필드는 서버에서 참조하는 정보
 
-client 필드는 서버에서 참조하지 않고, push payload 생성 시, 그대로 전달하는 payload
+  - "client" 필드는 서버에서 참조하지 않고, push payload 생성 시, payload 에 그대로 추가하여 전달하는 항목
 
-client 필드는 Android <-> PC 담당자가 서버와 관계없이 정의 가능함
+  - "client" 필드는 Android <-> PC 담당자가 서버와 관계없이 정의 가능함
 
-payload 상의 field 명은 "a-b-c" 와 같이 표기하였으면 합니다.(예) "unread-count"
+  - "payload" 상의 field 명은 "a-b-c" 와 같이 표기하였으면 합니다.(예) "unread-count"
 
-client 필드 바로 하위의 field 명은, server 바로 하위의 필드명에 없는 것으로 정의해야 함
+  - "client" 필드 바로 하위의 field 명은, server 바로 하위의 필드명에 없는 것으로 정의해야 함
 
 [source, json]
 ----
 {
   "server": {
     "type": "xxx",
-    "receivers": [
+    "participants": [
       
     ],
     "body-parts": [
@@ -134,7 +134,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ■ 설명
 
   1) PC 에서 1:1 또는 1:N SMS 발송을 위해서 사용함
-  2) SMS 1:N 발송시 receivers 에 수신자 목록에 추가하는 방식으로 1회 호출하도록 함
+  2) SMS 1:N 발송시 participants 에 수신자 목록에 추가하는 방식으로 1회 호출하도록 함
 
 [source, json]
 ----
@@ -183,7 +183,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ■ 설명
 
   1) PC 에서 1:1 또는 1:N MMS 발송을 위해서 사용함
-  2) MMS 1:N 발송시 receivers 에 수신자 목록에 추가하는 방식으로 1회 호출하도록 함
+  2) MMS 1:N 발송시 participants 에 수신자 목록에 추가하는 방식으로 1회 호출하도록 함
 
 [source, json]
 ----
