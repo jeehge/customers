@@ -7,7 +7,7 @@ by Shin Kwan Young;
 :toclevels: 4
 :sectlinks:
 
-== 전문 (PC/Android -> Server)
+[[overview]] 전문 (PC/Android -> Server)
 
 PC -> Server 또는 Android -> Server 요청시에는 아래, SMSMMS000 전문 1개만을 사용.
 
