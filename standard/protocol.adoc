@@ -115,14 +115,14 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 ■ 설명
 
   1) PC 에서 1:1 또는 1:N SMS 발송을 위해서 사용함
-  2) SMS 1:N 발송시 receivers 에 수신자 목록 추가하는 방식으로 1회 호출하도록 함
+  2) SMS 1:N 발송시 receivers 에 수신자 목록에 추가하는 방식으로 1회 호출하도록 함
 
 [source, json]
 ----
 {
   "server": {
     "type": "OUT_SMS",
-    "receivers": [
+    "participants": [
       {
         "mobile": "010-1111-2222"
       },
@@ -144,7 +144,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 ----
 {
   "type": "OUT_SMS",
-  "receivers": [
+  "participants": [
     {
       "mobile": "010-1111-2222"
     },
@@ -154,6 +154,83 @@ Android-Originated SMS/MMS Sync 요청(by Android)
   ],
   "temp-id": "xxxxxx",
   "text": "SMS 문자 내용"
+}
+----
+
+== MMS 발송 요청
+
+■ 요청 : PC -> Server
+
+■ 설명
+
+  1) PC 에서 1:1 또는 1:N MMS 발송을 위해서 사용함
+  2) MMS 1:N 발송시 receivers 에 수신자 목록에 추가하는 방식으로 1회 호출하도록 함
+
+[source, json]
+----
+{
+  "server": {
+    "type": "OUT_MMS",
+    "participants": [
+      {
+        "mobile": "010-1111-2222"
+      },
+      {
+        "mobile": "010-3333-4444"
+      }
+    ],
+    "body-parts": [
+      {
+        "part-id": 1,
+        "mime-type": "xxxx/yyyy",
+        "text": "MMS 문자 내용",
+        "file-id": 1
+      },
+      {
+        "part-id": 2,
+        "mime-type": "xxxx/yyyy",
+        "text": "MMS 문자 내용",
+        "file-id": 2
+      }
+    ]
+  },
+  "client": {
+    "temp-id": "xxxxxx",
+    "subject": "MMS 제목"
+  }
+}
+----
+    
+■ Push Payload : Server -> Android
+
+[source, json]
+----
+{
+  "type": "OUT_MMS",
+  "participants": [
+    {
+      "mobile": "010-1111-2222"
+    },
+    {
+      "mobile": "010-3333-4444"
+    }
+  ],
+  "temp-id": "xxxxxx",
+  "subject": "MMS 제목",
+  "body-parts": [
+    {
+      "part-id": 1,
+      "mime-type": "xxxx/yyyy",
+      "text": "MMS 문자 내용",
+      "file-url": "http://x.y.z/a/b/c"
+    },
+    {
+      "part-id": 2,
+      "mime-type": "xxxx/yyyy",
+      "text": "MMS 문자 내용",
+      "file-url": "http://x.y.z/a/b/c"
+    }
+  ]
 }
 ----
 
@@ -214,88 +291,25 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== MMS 발송 요청
-
-■ 요청 : PC -> Server
-
-[source, json]
-----
-{
-  "server": {
-    "type": "OUT_MMS",
-    "receivers": [
-      {
-        "mobile": "010-1111-2222"
-      },
-      {
-        "mobile": "010-3333-4444"
-      }
-    ],
-    "body-parts": [
-      {
-        "part-id": 1,
-        "mime-type": "xxxx/yyyy",
-        "text": "MMS 문자 내용",
-        "file-id": 1
-      },
-      {
-        "part-id": 2,
-        "mime-type": "xxxx/yyyy",
-        "text": "MMS 문자 내용",
-        "file-id": 2
-      }
-    ]
-  },
-  "client": {
-    "temp-id": "xxxxxx",
-    "subject": "MMS 제목"
-  }
-}
-----
-    
-■ Push Payload : Server -> Android
-
-[source, json]
-----
-{
-  "type": "OUT_MMS",
-  "receivers": [
-    {
-      "mobile": "010-1111-2222"
-    },
-    {
-      "mobile": "010-3333-4444"
-    }
-  ],
-  "temp-id": "xxxxxx",
-  "subject": "MMS 제목",
-  "body-parts": [
-    {
-      "part-id": 1,
-      "mime-type": "xxxx/yyyy",
-      "text": "MMS 문자 내용",
-      "file-url": "http://x.y.z/a/b/c"
-    },
-    {
-      "part-id": 2,
-      "mime-type": "xxxx/yyyy",
-      "text": "MMS 문자 내용",
-      "file-url": "http://x.y.z/a/b/c"
-    }
-  ]
-}
-----
-
 == MMS Sync 요청
 
 ■ 요청 : Android -> Server
+
+■ 설명
+
+  1) PC의 MMS 1:1 또는 1:N 발송요청에 대해서, Android 는 MMS 발송 성공여부와 관계없이
+     본 전문을 호출하지 않음.
+     따라서, PC의 MMS 1:1 또는 1:N 발송요청에 대해서, PC 는 SYNC_MMS Push Payload를 
+     수신할 수 없음     
+  2) Android 제조사 문자앱에서 MMS 1:1 또는 1:N 발송을 한경우, Android 는 발송결과를 취합하여
+     본 전문을 1회 호출함
 
 [source, json]
 ----
 {
   "server": {
     "type": "SYNC_MMS",
-    "sender-or-receiver": {
+    "participants": {
       "mobile": "010-1111-2222",
       "name": "홍길동"
     },
@@ -330,7 +344,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 ----
 {
   "type": "SYNC_MMS",
-  "sender-or-receiver": {
+  "participants": {
     "name": "홍길동",
     "position": "과장",
     "dept-name": "개발1팀",
@@ -367,7 +381,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 {
   "server": {
     "type": "SMS_MMS_RESULT",
-    "receivers": [
+    "participants": [
       {
         "mobile": "010-1111-2222",
         "name": "홍길동1"
@@ -419,7 +433,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
   "type": "SMS_MMS_RESULT",
   "sub-type": "SMS/MMS",
   "temp-id": "xxxxxx",
-  "receivers": [
+  "participants": [
       {
         "mobile" : "010-xxxx-yyyy",
         "name": "이름 또는 전화번호",
