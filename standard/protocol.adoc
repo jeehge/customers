@@ -48,7 +48,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ----
 
 
-== SMS 전송
+== PC-Originated SMS Sync
 
 ■ 요청 : PC -> Server
 
@@ -56,7 +56,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ----
 {
   "server": {
-    "type": "OUT_SMS",
+    "type": "SYNC_SMS",
     "receivers": [
       {
         "mobile": "010-1111-2222"
@@ -78,7 +78,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 [source, json]
 ----
 {
-  "type": "OUT_SMS",
+  "type": "SYNC_SMS",
   "receivers": [
     {
       "mobile": "010-1111-2222"
@@ -92,7 +92,51 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== MMS 전송 
+== Android-Originated SMS Sync 
+
+■ 요청 : Android -> Server
+
+[source, json]
+----
+{
+  "server": {
+    "type": "SYNC_SMS",
+    "sender-or-receiver": {
+      "mobile": "010-1111-2222",
+      "name": "홍길동"
+    }
+  },
+  "client": {
+    "box" : "IN/OUT",
+    "room-id": 222,
+    "room-unread-count": 11,
+    "message-id": 11,
+    "text": "SMS 문자 내용"
+  }
+}
+----
+
+■ Push Payload : Server -> PC
+
+[source, json]
+----
+{
+  "type": "SYNC_SMS",
+  "sender-or-receiver": {
+    "name": "홍길동",
+    "position": "과장",
+    "dept-name": "개발1팀",
+    "upper-dept-name": "개발실"
+  },
+  "box": "IN/OUT",
+  "room-id": 222,
+  "room-unread-count": 11,
+  "message-id": 11,
+  "text": "SMS 문자 내용"
+}
+----
+
+== PC-Orginated MMS Sync
 
 ■ 요청 : PC -> Server
 
@@ -100,7 +144,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ----
 {
   "server": {
-    "type": "OUT_MMS",
+    "type": "SYNC_MMS",
     "receivers": [
       {
         "mobile": "010-1111-2222"
@@ -164,153 +208,7 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 }
 ----
 
-== SMS/MMS 전송 결과
-
-■ 요청 : Android -> Server
-
-[source, json]
-----
-{
-  "server": {
-    "type": "OUT_SMS_MMS_RESULT",
-    "receivers": [
-      {
-        "mobile": "010-1111-2222",
-        "name": "홍길동1"
-      },
-      {
-        "mobile": "010-1111-2223",
-        "name": "홍길동2"
-      },
-      {
-        "mobile": "010-1111-2224",
-        "name": ""
-      }
-    ]
-  },
-  "client": {
-    "sub-type": "SMS/MMS",
-    "temp-id": "xxxxxx",
-    "sms": [
-      {
-        "receiver": "010-1111-2222",
-        "result": true,
-        "room-id": 222,
-        "message-id": 11,
-        "unread-count": 1
-      },
-      {
-        "receiver": "010-1111-2222",
-        "result": false,
-        "room-id": 223,
-        "message-id": 22,
-        "unread-count": 1
-      }
-    ],
-    "mms": {
-      "result": true,
-      "room-id": 222,
-      "message-id": 11,
-      "unread-count": 11
-    }
-  }
-}
-----
-
-■ Push Payload : Server -> PC
-
-[source, json]
-----
-{
-  "type": "OUT_SMS_MMS_RESULT",
-  "sub-type": "SMS/MMS",
-  "temp-id": "xxxxxx",
-  "receivers": [
-      {
-        "mobile" : "010-xxxx-yyyy",
-        "name": "이름 또는 전화번호",
-        "position": "과장",
-        "dept-name": "개발1팀",
-        "upper-dept-name": "개발실"
-      },
-      {
-        "mobile" : "010-xxxx-yyyy",
-        "name": "이름 또는 전화번호",
-        "position": "과장",
-        "dept-name": "개발1팀",
-        "upper-dept-name": "개발실"
-      }
-    ],
-  "sms": [
-    {
-      "receiver": "010-1111-2222",
-      "result": true,
-      "room-id": 222,
-      "message-id": 11,
-      "unread-count": 1
-    },
-    {
-      "receiver": "010-1111-2222",
-        "result": true,
-        "room-id": 222,
-        "message-id": 11,
-        "unread-count": 1
-    }
-  ],
-  "mms": {
-    "result": true,
-    "room-id": 222,
-    "message-id": 11,
-    "unread-count": 11
-  }
-}
-----
-
-== SMS Sync 
-
-■ 요청 : Android -> Server
-
-[source, json]
-----
-{
-  "server": {
-    "type": "SYNC_SMS",
-    "sender-or-receiver": {
-      "mobile": "010-1111-2222",
-      "name": "홍길동"
-    }
-  },
-  "client": {
-    "box" : "IN/OUT",
-    "room-id": 222,
-    "room-unread-count": 11,
-    "message-id": 11,
-    "text": "SMS 문자 내용"
-  }
-}
-----
-
-■ Push Payload : Server -> PC
-
-[source, json]
-----
-{
-  "type": "SYNC_SMS",
-  "sender-or-receiver": {
-    "name": "홍길동",
-    "position": "과장",
-    "dept-name": "개발1팀",
-    "upper-dept-name": "개발실"
-  },
-  "box": "IN/OUT",
-  "room-id": 222,
-  "room-unread-count": 11,
-  "message-id": 11,
-  "text": "SMS 문자 내용"
-}
-----
-
-== MMS Sync 
+== Android-Originated MMS Sync 
 
 ■ 요청 : Android -> Server
 
@@ -379,6 +277,108 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
   "room-unread-count": 11,
   "message-id": 11,
   "subject": "MMS 제목"
+}
+----
+
+== PC-Originated SMS/MMS Result
+
+■ 요청 : Android -> Server
+
+[source, json]
+----
+{
+  "server": {
+    "type": "SMS_MMS_RESULT",
+    "receivers": [
+      {
+        "mobile": "010-1111-2222",
+        "name": "홍길동1"
+      },
+      {
+        "mobile": "010-1111-2223",
+        "name": "홍길동2"
+      },
+      {
+        "mobile": "010-1111-2224",
+        "name": ""
+      }
+    ]
+  },
+  "client": {
+    "sub-type": "SMS/MMS",
+    "temp-id": "xxxxxx",
+    "sms": [
+      {
+        "receiver": "010-1111-2222",
+        "result": true,
+        "room-id": 222,
+        "message-id": 11,
+        "unread-count": 1
+      },
+      {
+        "receiver": "010-1111-2222",
+        "result": false,
+        "room-id": 223,
+        "message-id": 22,
+        "unread-count": 1
+      }
+    ],
+    "mms": {
+      "result": true,
+      "room-id": 222,
+      "message-id": 11,
+      "unread-count": 11
+    }
+  }
+}
+----
+
+■ Push Payload : Server -> PC
+
+[source, json]
+----
+{
+  "type": "SMS_MMS_RESULT",
+  "sub-type": "SMS/MMS",
+  "temp-id": "xxxxxx",
+  "receivers": [
+      {
+        "mobile" : "010-xxxx-yyyy",
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      },
+      {
+        "mobile" : "010-xxxx-yyyy",
+        "name": "이름 또는 전화번호",
+        "position": "과장",
+        "dept-name": "개발1팀",
+        "upper-dept-name": "개발실"
+      }
+    ],
+  "sms": [
+    {
+      "receiver": "010-1111-2222",
+      "result": true,
+      "room-id": 222,
+      "message-id": 11,
+      "unread-count": 1
+    },
+    {
+      "receiver": "010-1111-2222",
+        "result": true,
+        "room-id": 222,
+        "message-id": 11,
+        "unread-count": 1
+    }
+  ],
+  "mms": {
+    "result": true,
+    "room-id": 222,
+    "message-id": 11,
+    "unread-count": 11
+  }
 }
 ----
 
