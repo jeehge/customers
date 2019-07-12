@@ -108,15 +108,20 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 -> Android-Originated SMS/MMS Sync Push 수신(by PC)
 ----
 
-== PC-Originated SMS Sync
+== SMS 전송 요청
 
 ■ 요청 : PC -> Server
+
+■ 호출상황
+
+  1) PC 에서 1:1 또는 1:N SMS 발송시에+
+  2) SMS 1:N 발송시 receivers 에 수신자 목록 추가하는 방식으로 1회 호출
 
 [source, json]
 ----
 {
   "server": {
-    "type": "SYNC_SMS",
+    "type": "OUT_SMS",
     "receivers": [
       {
         "mobile": "010-1111-2222"
@@ -138,7 +143,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 [source, json]
 ----
 {
-  "type": "SYNC_SMS",
+  "type": "OUT_SMS",
   "receivers": [
     {
       "mobile": "010-1111-2222"
@@ -152,16 +157,17 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== Android-Originated SMS Sync 
+== SMS Sync 
 
 ■ 요청 : Android -> Server
+■ 호출상황 : 
 
 [source, json]
 ----
 {
   "server": {
     "type": "SYNC_SMS",
-    "sender-or-receiver": {
+    "participants": {
       "mobile": "010-1111-2222",
       "name": "홍길동"
     }
@@ -182,7 +188,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 ----
 {
   "type": "SYNC_SMS",
-  "sender-or-receiver": {
+  "participants": {
     "name": "홍길동",
     "position": "과장",
     "dept-name": "개발1팀",
@@ -196,7 +202,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== PC-Orginated MMS Sync
+== MMS Sync
 
 ■ 요청 : PC -> Server
 
