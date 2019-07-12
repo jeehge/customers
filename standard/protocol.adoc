@@ -58,54 +58,73 @@ client 필드 바로 하위의 field 명은, server 바로 하위의 필드명�
 ----
 [1] PC에서 SMS 전송
 
-PC-Originated SMS Sync 요청(by PC) 
--> Server
--> PC-Originated SMS Sync Push Payload 수신(by Android)
--> PC-Originated SMS/MMS Result 요청(by Android)
--> Server
--> PC-Originated SMS/MMS Result Push Payload 수신(by PC)
+  ■  1:1
+    "SMS 발송 요청(OUT_SMS)"(by PC) 
+    -> Server
+    -> "OUT_SMS" Push Payload 수신(by Android)
+    -> "SMS/MMS 발송결과 전달요청(SMS_MMS_RESULT)"(by Android)
+    -> Server
+    -> "SMS_MMS_RESULT" Push Payload 수신(by PC)
+
+  ■  1:N
+    "SMS 발송 요청(OUT_SMS)"(by PC) 
+    -> Server
+    -> "OUT_SMS" Push Payload 수신(by Android)
+    -> "SMS/MMS 발송결과 전달요청(SMS_MMS_RESULT)"(by Android)
+    -> Server
+    -> "SMS Sync 요청(SYNC_SMS)"(by Android)
+    -> Server  
+    -> "SMS_MMS_RESULT" Push Payload 수신(by PC)
+    -> "SYNC_SMS" Push Payload 수신(by PC)
+    
+    (참고)
+    
+    1) "SMS_MMS_RESULT" 및 "SYNC_SMS" Push Payload 의 수신순서는 보장하지 않음
+    2) PC 에서 1:4 SMS 발송을 요청하고, Android 는 SMS 3건만 발송성공한 경우,
+       PC 는 "SMS_MMS_RESULT" Push Payload 1건, "SYNC_SMS" Payload 3건을 수신함
+       SMS 발송실패한 건에 대한 "SYNC_SMS" push payload 는 발송되지 않음
 
 [2] PC에서 MMS 전송
 
-PC-Originated MMS Sync 요청(by PC) 
--> Server
--> PC-Originated MMS Sync Push Payload 수신(by Android)
--> PC-Originated SMS/MMS Result 요청(by Android)
--> Server
--> PC-Originated SMS/MMS Result Push Payload 수신(by PC)
+    "MMS 발송 요청(OUT_MMS)"(by PC) 
+    -> Server
+    -> "OUT_MMS" Push Payload 수신(by Android)
+    -> "SMS/MMS 발송결과 전달요청(SMS_MMS_RESULT)"(by Android)
+    -> Server
+    -> "SMS_MMS_RESULT" Push Payload 수신(by PC)
 
 [3] Android에서 SMS 전송
 
-Android-Originated SMS Sync 요청(sub-type=OUT)(by Android)
--> Server
--> Android-Originated SMS Sync Push Payload 수신(by PC)
-
+    "SMS Sync 요청(SYNC_SMS)"(by Android) 
+    -> Server
+    -> "SYNC_SMS" Push Payload 수신(by PC)
+    
 [4] Android에서 SMS 수신
 
-Android-Originated SMS Sync 요청(sub-type=IN)(by Android)
--> Server
--> Android-Originated SMS Sync Push Payload 수신(by PC)
-
+    "SMS Sync 요청(SYNC_SMS)"(by Android) 
+    -> Server
+    -> "SYNC_SMS" Push Payload 수신(by PC)
+    
 [5] Android에서 MMS 전송
 
-Android-Originated MMS Sync 요청(sub-type=OUT)(by Android)
--> Server
--> Android-Originated MMS Sync Push Payload 수신(by PC)
+    "MMS Sync 요청(SYNC_MMS)"(by Android) 
+    -> Server
+    -> "SYNC_MMS" Push Payload 수신(by PC)
 
 [6] Android에서 SMS 수신
 
-Android-Originated MMS Sync 요청(sub-type=IN)(by Android)
--> Server
--> Android-Originated MMS Sync Push Payload 수신(by PC)
+    "MMS Sync 요청(SYNC_MMS)"(by Android) 
+    -> Server
+    -> "SYNC_MMS" Push Payload 수신(by PC)
 
-[7] Android 에서 SMS/MMS Sync 요청
 
-- [1],[2],[3],[4],[5],[6] 이후 Android 에서 
-  대화방 삭제/메시지 삭제/룸 삭제/읽음처리를 위한 용도로 사용함
-  
-Android-Originated SMS/MMS Sync 요청(by Android)
--> Server 
--> Android-Originated SMS/MMS Sync Push 수신(by PC)
+[7] Android 에서 SMS/MMS Sync 요청 (대화박 삭제/메시지 삭제/룸 삭제/읽음처리 용도)
+
+    - [1],[2],[3],[4],[5],[6] 이후 Android 에서 호출함
+    
+    "SMS/MMS Sync 요청(SYNC_SMS_MMS)"(by Android)
+    -> Server 
+    -> "SYNC_SMS_MMS" Push 수신(by PC)
 ----
 
 == SMS 발송 요청
@@ -242,14 +261,15 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 
   1) PC의 SMS 1:1 발송요청에 대해서, Android 는 SMS 발송 성공여부와 관계없이
      본 전문을 호출하지 않음.
-     따라서, PC의 SMS 1:1 발송요청에 대해서, PC 는 SYNC_SMS Push Payload를 
-     수신할 수 없음     
+     따라서, PC의 SMS 1:1 발송요청에 대해서, PC 는 SYNC_SMS Push Payload를 수신하지 않음
   2) PC의 SMS 1:N 발송요청에 대해서, Android 는 SMS 발송이 성공한 건만큼 호출함
      예) PC에서 4명에게 SMS 발송 요청하고, Android가 3명에게만 SMS 발송성공한 경우,
          Android 는 성공한 SMS 3건에 대해서만, 본 전문을 3번 호출함
-         따라서, PC 로는 3번의 SYNC_SMS Push Payload 가 발송됨
+         따라서, PC는 3건의 SYNC_SMS Push Payload 를 수신함
   3) Android 제조사 문자앱에서 SMS 1:N 발송을 한경우, Android 는 발송결과를 취합하여
-     본 전문을 1회만 호출함
+     본 전문을 1회만 호출함.
+     따라서, Android 제조사 문자앱에서 SMS 1:N 발송을 한 경우, 
+     PC 는 1건의 SYNC_SMS Push Payload 를 수신함
 
 [source, json]
 ----
