@@ -108,7 +108,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 -> Android-Originated SMS/MMS Sync Push 수신(by PC)
 ----
 
-== SMS 전송 요청
+== SMS 발송 요청
 
 ■ 요청 : PC -> Server
 
@@ -157,7 +157,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== SMS Sync 
+== SMS Sync 요청
 
 ■ 요청 : Android -> Server
 
@@ -214,7 +214,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== MMS Sync
+== MMS 발송 요청
 
 ■ 요청 : PC -> Server
 
@@ -222,7 +222,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 ----
 {
   "server": {
-    "type": "SYNC_MMS",
+    "type": "OUT_MMS",
     "receivers": [
       {
         "mobile": "010-1111-2222"
@@ -286,7 +286,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== Android-Originated MMS Sync 
+== MMS Sync 요청
 
 ■ 요청 : Android -> Server
 
@@ -358,7 +358,7 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 }
 ----
 
-== PC-Originated SMS/MMS Result
+== SMS/MMS 발송 결과
 
 ■ 요청 : Android -> Server
 
