@@ -112,9 +112,9 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 
 ■ 요청 : PC -> Server
 
-■ 호출상황
+■ 설명
 
-  1) PC 에서 1:1 또는 1:N SMS 발송을 위해서 사용
+  1) PC 에서 1:1 또는 1:N SMS 발송을 위해서 사용함
   2) SMS 1:N 발송시 receivers 에 수신자 목록 추가하는 방식으로 1회 호출하도록 함
 
 [source, json]
@@ -161,22 +161,25 @@ Android-Originated SMS/MMS Sync 요청(by Android)
 
 ■ 요청 : Android -> Server
 
-■ 호출상황
+■ 설명
 
-  1) PC의 SMS 1:N 발송요청에 대해서, Android 는 SMS 발송이 성공한 건만큼 호출함
+  1) PC의 SMS 1:1 발송요청에 대해서, Android 는 SMS 발송 성공여부와 관계없이
+     본 전문을 호출하지 않음.
+     따라서, PC의 SMS 1:1 발송요청에 대해서, PC 는 SYNC_SMS Push Payload를 
+     수신할 수 없음     
+  2) PC의 SMS 1:N 발송요청에 대해서, Android 는 SMS 발송이 성공한 건만큼 호출함
      예) PC에서 4명에게 SMS 발송 요청하고, Android가 3명에게만 SMS 발송성공한 경우,
          Android 는 성공한 SMS 3건에 대해서만, 본 전문을 3번 호출함
          따라서, PC 로는 3번의 SYNC_SMS Push Payload 가 발송됨
-  2) Android 제조사 문자앱에서 SMS 1:N 발송을 한경우, Android 는 발송결과를 취합하여
+  3) Android 제조사 문자앱에서 SMS 1:N 발송을 한경우, Android 는 발송결과를 취합하여
      본 전문을 1회만 호출함
-
 
 [source, json]
 ----
 {
   "server": {
     "type": "SYNC_SMS",
-    "participants": {
+    "participants": { // 수신 메시지의 경우, 발송자 목록, 발신 메시지의 경우, 수신자 목록을 의미함
       "mobile": "010-1111-2222",
       "name": "홍길동"
     }
