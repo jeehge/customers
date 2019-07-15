@@ -22,6 +22,18 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 </body>
 ----
 
+----
+(response.header.status)
+
+0 : 성공
+1 : PC가 로그인되어 있지 않음
+2 : PC 및 Android 모두 로그인되어 있지 않거나, ON 상태가 아님
+9998 : Push 실패 
+9999 : 알 수 없는 오류
+----
+
+
+
 == 요청을 위한 JSON Payload 의 기본구조
 
   - "server" 필드는 서버에서 참조하는 정보
@@ -292,7 +304,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
     "room-id": 222,
     "room-unread-count": 11,
     "message-id": 11,
-    "text": "SMS 문자 내용"
+    "text": "SMS 문자 내용",
     "date": 20190715100021202
   }
 }
@@ -322,7 +334,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
   "room-id": 222,
   "room-unread-count": 11,
   "message-id": 11,
-  "text": "SMS 문자 내용"
+  "text": "SMS 문자 내용",
   "date": 20190715100021202
 }
 ----
