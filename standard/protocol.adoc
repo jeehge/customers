@@ -293,6 +293,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
     "room-unread-count": 11,
     "message-id": 11,
     "text": "SMS 문자 내용"
+    "date": 20190715100021202
   }
 }
 ----
@@ -322,6 +323,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
   "room-unread-count": 11,
   "message-id": 11,
   "text": "SMS 문자 내용"
+  "date": 20190715100021202
 }
 ----
 
@@ -374,6 +376,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
     "room-unread-count": 11,
     "message-id": 11,
     "subject": "MMS 제목"
+    "date": 20190715100021202
   }
 }
 ----
@@ -417,6 +420,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
   "room-unread-count": 11,
   "message-id": 11,
   "subject": "MMS 제목"
+  "date": 20190715100021202
 }
 ----
 
@@ -453,21 +457,24 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
         "result": true,
         "room-id": 222,
         "message-id": 11,
-        "unread-count": 1
+        "unread-count": 1,
+        "date": 20190715100021202
       },
       {
         "receiver": "010-1111-2222",
         "result": false,
         "room-id": 223,
         "message-id": 22,
-        "unread-count": 1
+        "unread-count": 1,
+        "date": 20190715100021202
       }
     ],
     "mms": {
       "result": true,
       "room-id": 222,
       "message-id": 11,
-      "unread-count": 11
+      "unread-count": 11,
+      "date": 20190715100021202
     }
   }
 }
@@ -503,21 +510,24 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
       "result": true,
       "room-id": 222,
       "message-id": 11,
-      "unread-count": 1
+      "unread-count": 1,
+      "date": 20190715100021202
     },
     {
       "receiver": "010-1111-2222",
         "result": true,
         "room-id": 222,
         "message-id": 11,
-        "unread-count": 1
+        "unread-count": 1,
+        "date": 20190715100021202
     }
   ],
   "mms": {
     "result": true,
     "room-id": 222,
     "message-id": 11,
-    "unread-count": 11
+    "unread-count": 11,
+    "date": 20190715100021202
   }
 }
 ----
