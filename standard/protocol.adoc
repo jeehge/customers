@@ -444,7 +444,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 ----
 {
   "server": {
-    "type": "SMS_MMS_RESULT",
+    "type": "OUT_SMS_MMS_RESULT",
     "participants": [
       {
         "mobile": "010-1111-2222",
@@ -498,7 +498,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
 [source, json]
 ----
 {
-  "type": "SMS_MMS_RESULT",
+  "type": "OUT_SMS_MMS_RESULT",
   "sub-type": "SMS/MMS",
   "temp-id": "xxxxxx",
   "send-result":true,//false
