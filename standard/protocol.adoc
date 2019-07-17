@@ -463,6 +463,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
   "client": {
     "sub-type": "SMS/MMS",
     "temp-id": "xxxxxx",
+    "send-result":true,//false
     "sms": [
       {
         "receiver": "010-1111-2222",
@@ -500,6 +501,7 @@ payload 필드에 셋팅할 JSON String 은 아래 기술함
   "type": "SMS_MMS_RESULT",
   "sub-type": "SMS/MMS",
   "temp-id": "xxxxxx",
+  "send-result":true,//false
   "participants": [
       {
         "mobile" : "010-xxxx-yyyy",
