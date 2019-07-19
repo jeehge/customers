@@ -1,5 +1,12 @@
+16
+
+The problem is that several thread try to write in same time on the socket so :
+
+try :
+
 String websocketsesssion_id = map_id.get(username);
 WebSocketSession wss = map_users.get(websocketsesssion_id);
 synchronized(wss) {
  wss.sendMessage(new TextMessage(new java.util.Date()));
 }
+shareimprove this answer
