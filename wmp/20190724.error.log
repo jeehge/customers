@@ -239,3 +239,116 @@ java.lang.IllegalStateException: Cannot send a message when session is closed
         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
         at java.lang.Thread.run(Thread.java:745)
+[2019-07-04 16:20:23][INFO ][c.h.s.p.s.w.WebSocketTasHandler] -
+==========================================================
+##### Inbound Message from [WebSocket Client] #####
+==========================================================
+{
+  "platform-header" : {
+    "VERSION" : "PHV102",
+    "APPLICATION_ID" : "PPSE",
+    "MESSAGE_ID" : "M00000004",
+    "SESSION_ID" : 0,
+    "TRANSACTION_ID" : 1553440026465,
+    "SERVICE_ID" : 0,
+    "IMEI" : "00000000000000000000",
+    "WIFI_MAC" : "309C23E240EE",
+    "MSISDN" : "309C23E240EE",
+    "MODEL_NO" : "PC",
+    "ISP_NAME" : "000000000",
+    "OS_TYPE" : "X",
+    "OS_VERSION" : "00000000000000000000",
+    "UUID" : "000000000000000000000000",
+    "BODY_TYPE" : 1,
+    "STATUS_CODE" : 0,
+    "HEADER_LENGTH" : 2,
+    "BODY_LENGTH" : 0
+  },
+  "header" : {
+    "status" : 0
+  },
+  "body" : {
+    "serviceId" : "TPS",
+    "auth" : "c6d31ab9c9505f0a525a5e3e095dcf7d66b6259d6f7570f2b093475f575af79a",
+    "pushKey" : "ps.wmp-32632f2e2b7c4907ae0e932035effa21X",
+    "gcmPushKey" : "",
+    "apnsPushKey" : "null"
+  }
+}
+[2019-07-04 16:20:23][INFO ][c.h.s.p.s.w.WebSocketTasHandler] - Disconnected : /10.105.253.11:50734 CloseStatus[code=1011, reason=null]
+[2019-07-04 16:20:23][ERROR][o.s.w.s.h.ExceptionWebSocketHandlerDecorator] - Closing session due to exception for WebSocketServerSockJsSession[id=yxdwhtvu]
+java.lang.RuntimeException: org.springframework.web.socket.sockjs.SockJsTransportFailureException: Failed to write SockJsFrame content='a["{\"platform-header\":{\"VERSION\":\"PHV102\",\"APPLICATION_ID\":\"PPSE\",\"ME...(truncated)'; nested exception is java.lang.IllegalStateException: The remote endpoint was in state [TEXT_PARTIAL_WRITING] which is an invalid state for called method
+        at com.happyhouse.servers.ps.service.websocket.WebSocketTasHandler.handleTextMessage(WebSocketTasHandler.java:52)
+        at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+        at org.springframework.web.socket.handler.WebSocketHandlerDecorator.handleMessage(WebSocketHandlerDecorator.java:75)
+        at org.springframework.web.socket.handler.LoggingWebSocketHandlerDecorator.handleMessage(LoggingWebSocketHandlerDecorator.java:56)
+        at org.springframework.web.socket.handler.ExceptionWebSocketHandlerDecorator.handleMessage(ExceptionWebSocketHandlerDecorator.java:58)
+        at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.delegateMessages(AbstractSockJsSession.java:380)
+        at org.springframework.web.socket.sockjs.transport.session.WebSocketServerSockJsSession.handleMessage(WebSocketServerSockJsSession.java:194)
+        at org.springframework.web.socket.sockjs.transport.handler.SockJsWebSocketHandler.handleTextMessage(SockJsWebSocketHandler.java:92)
+        at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:110)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:42)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:81)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:78)
+        at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:394)
+        at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:119)
+        at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:495)
+        at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:294)
+        at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+        at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:82)
+        at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:171)
+        at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:151)
+        at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:148)
+        at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:54)
+        at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53)
+        at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:806)
+        at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1498)
+        at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+        at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.web.socket.sockjs.SockJsTransportFailureException: Failed to write SockJsFrame content='a["{\"platform-header\":{\"VERSION\":\"PHV102\",\"APPLICATION_ID\":\"PPSE\",\"ME...(truncated)'; nested exception is java.lang.IllegalStateException: The remote endpoint was in state [TEXT_PARTIAL_WRITING] which is an invalid state for called method
+        at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.writeFrame(AbstractSockJsSession.java:335)
+        at org.springframework.web.socket.sockjs.transport.session.WebSocketServerSockJsSession.sendMessageInternal(WebSocketServerSockJsSession.java:212)
+        at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.sendMessage(AbstractSockJsSession.java:162)
+        at com.happyhouse.servers.ps.service.websocket.WebSocketTasHandler.handleTextMessage(WebSocketTasHandler.java:48)
+        ... 30 common frames omitted
+Caused by: java.lang.IllegalStateException: The remote endpoint was in state [TEXT_PARTIAL_WRITING] which is an invalid state for called method
+        at org.apache.tomcat.websocket.WsRemoteEndpointImplBase$StateMachine.checkState(WsRemoteEndpointImplBase.java:1228)
+        at org.apache.tomcat.websocket.WsRemoteEndpointImplBase$StateMachine.textPartialStart(WsRemoteEndpointImplBase.java:1186)
+        at org.apache.tomcat.websocket.WsRemoteEndpointImplBase.sendPartialString(WsRemoteEndpointImplBase.java:222)
+        at org.apache.tomcat.websocket.WsRemoteEndpointBasic.sendText(WsRemoteEndpointBasic.java:49)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketSession.sendTextMessage(StandardWebSocketSession.java:203)
+        at org.springframework.web.socket.adapter.AbstractWebSocketSession.sendMessage(AbstractWebSocketSession.java:101)
+        at org.springframework.web.socket.sockjs.transport.session.WebSocketServerSockJsSession.writeFrameInternal(WebSocketServerSockJsSession.java:222)
+        at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.writeFrame(AbstractSockJsSession.java:318)
+        ... 33 common frames omitted
+org.springframework.web.socket.sockjs.SockJsMessageDeliveryException: Failed to deliver message(s) [JSON]......
+        at org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSession.delegateMessages(AbstractSockJsSession.java:385)
+        at org.springframework.web.socket.sockjs.transport.session.WebSocketServerSockJsSession.handleMessage(WebSocketServerSockJsSession.java:194)
+        at org.springframework.web.socket.sockjs.transport.handler.SockJsWebSocketHandler.handleTextMessage(SockJsWebSocketHandler.java:92)
+        at org.springframework.web.socket.handler.AbstractWebSocketHandler.handleMessage(AbstractWebSocketHandler.java:43)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.handleTextMessage(StandardWebSocketHandlerAdapter.java:110)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter.access$000(StandardWebSocketHandlerAdapter.java:42)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:81)
+        at org.springframework.web.socket.adapter.standard.StandardWebSocketHandlerAdapter$3.onMessage(StandardWebSocketHandlerAdapter.java:78)
+        at org.apache.tomcat.websocket.WsFrameBase.sendMessageText(WsFrameBase.java:394)
+        at org.apache.tomcat.websocket.server.WsFrameServer.sendMessageText(WsFrameServer.java:119)
+        at org.apache.tomcat.websocket.WsFrameBase.processDataText(WsFrameBase.java:495)
+        at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:294)
+        at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133)
+        at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:82)
+        at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:171)
+        at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:151)
+        at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:148)
+        at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:54)
+        at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:53)
+        at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:806)
+        at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1498)
+        at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+        at java.lang.Thread.run(Thread.java:745)
