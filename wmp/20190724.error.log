@@ -352,3 +352,14 @@ org.springframework.web.socket.sockjs.SockJsMessageDeliveryException: Failed to 
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
         at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
         at java.lang.Thread.run(Thread.java:745)
+### Error updating database.  Cause: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x99\x84",...' for column 'PAYLOAD' at row 1
+### The error may involve com.happyhouse.servers.ps.dao.PushDao.insertPushData-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO MPPS_PUSH_DATA            (             PUSH_GROUP_KEY            ,PUSH_GROUP_ID            ,PUSH_ID            ,SYSTEM_ID            ,MSG_UUID            ,PUSH_RECEIVER            ,NOTI_MSG_SEND_YN            ,MSG_TYPE            ,PAYLOAD            ,PPC_BROADCAST_ACT_NM            ,PPC_APP_NM            ,PPC_PACKAGE_NM            ,PPC_MODE            ,FAILOVER            ,PRIORITY            ,PPC_TTL            ,REG_DT            )      VALUES            (            ?            ,?            ,?            ,?            ,?            ,?            ,'Y'            ,?            ,?            ,?            ,?            ,?            ,?            ,0            ,1            ,0            ,NOW(3)            )
+### Cause: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x99\x84",...' for column 'PAYLOAD' at row 1
+; uncategorized SQLException for SQL []; SQL state [HY000]; error code [1366]; Incorrect string value: '\xF0\x9F\x99\x84",...' for column 'PAYLOAD' at row 1; nested exception is java.sql.SQLException: Incorrect string value: '\xF0\x9F\x99\x84",...' for column 'PAYLOAD' at row 1
+org.springframework.jdbc.UncategorizedSQLException:
+### Error updating database.  Cause: java.sql.SQLException: Incorrect string value: '\xF0\x9F\x99\x84",...' for column 'PAYLOAD' at row 1
+### The error may involve com.happyhouse.servers.ps.dao.PushDao.insertPushData-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO MPPS_PUSH_DATA            (             PUSH_GROUP_KEY            ,PUSH_GROUP_ID            ,PUSH_ID            ,SYSTEM_ID            ,MSG_UUID            ,PUSH_RECEIVER            ,NOTI_MSG_SEND_YN            ,MSG_TYPE            ,PAYLOAD            ,PPC_BROADCAST_ACT_NM            ,PPC_APP_NM            ,PPC_PACKAGE_NM            ,PPC_MODE            ,FAILOVER            ,PRIORITY            ,PPC_TTL            ,REG_DT            )      VALUES            (            ?            ,?            ,?            ,?            ,?            ,?            ,'Y'            ,?            ,?            ,?            ,?            ,?            ,?            ,0            ,1            ,0            ,NOW(3)            )
