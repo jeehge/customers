@@ -1,0 +1,2 @@
+10:48:05.345[pool-3-thread-13][ERROR] deviceMessageUuid : TMT548fa97c406a4f4796a3e8f2d18ca301189887090067534680, Err2 java.lang.NullPointerException
+10:48:05.346[pool-3-thread-11][ERROR] deviceMessageUuid : TMT7d63959d39784521a2db0bfcaf31ad83189887153350351390, Err2 java.lang.NullPointerException
