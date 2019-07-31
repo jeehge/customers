@@ -1,7 +1,5 @@
 
-SELECT userInfo.userIdnfr, 
-       pmsPushkeyInfo.pcPushKey,
-       ppsPushkeyInfo.UUID,
+SELECT ppsPushkeyInfo.UUID,
        pushHistory.DEVICE_MSG_UUID,
        pushHistory.PPC_PUSH_STATUS,
        pushData.PAYLOAD,
@@ -23,6 +21,7 @@ SELECT userInfo.userIdnfr,
   AND deviceInfo.regiStusDstcd = '10'
   AND userInfo.name = '채지윤'
   AND deviceInfo.devceOsType in ('P')
+  AND pushHistory.PPC_PUSH_STATUS = 9999
   AND pushHistory.DEVICE_MSG_UUID NOT IN (
 		  SELECT DISTINCT
 			   pushHistory.DEVICE_MSG_UUID
@@ -45,4 +44,10 @@ SELECT userInfo.userIdnfr,
 		  AND deviceInfo.devceOsType in ('P')
 		  AND pushHistory.PPC_PUSH_STATUS = 0
 	   )
+       
   ORDER BY pushHistory.reg_dt DESC;
+  
+  
+SELECT *
+  FROM MPPS_PUSH_DATA_HISTORY
+  WHERE DEVICE_MSG_UUID in ('TMT98e370576ac24ac194e454271dd31c8d153877167128794950')
