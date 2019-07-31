@@ -1,0 +1,177 @@
+10:03:59.453[DBAgent-2965][ERROR] 26. PreparedStatement.executeBatch() FAILED! batching 2 statements:
+1:  INSERT INTO MPPS_PUSH_DEVICE_SUCCESS
+           (
+           PUSH_DEVICE_ID
+           ,PUSH_TYPE
+           ,SYSTEM_ID
+           ,DEVICE_MSG_UUID
+           ,STATUS
+           ,FAIL_CNT
+           ,REG_DT
+           ,UPT_DT
+           )
+     VALUES
+           (
+           5262609
+           ,'01'
+           ,3
+           ,'TMT3449ca34a27e460dbe23bd5fc41bafe2190726810243474260'
+           ,0
+           ,0
+           ,NOW(3)
+           ,NOW(3)
+           )
+2:  INSERT INTO MPPS_PUSH_DEVICE_SUCCESS
+           (
+           PUSH_DEVICE_ID
+           ,PUSH_TYPE
+           ,SYSTEM_ID
+           ,DEVICE_MSG_UUID
+           ,STATUS
+           ,FAIL_CNT
+           ,REG_DT
+           ,UPT_DT
+           )
+     VALUES
+           (
+           5262611
+           ,'01'
+           ,3
+           ,'TMT7aded4d9676c47d88a650c8e78ab12e0190726847336260640'
+           ,0
+           ,0
+           ,NOW(3)
+           ,NOW(3)
+           )
+ {FAILED after 2 msec}
+java.sql.BatchUpdateException: Duplicate entry '3-5262609-01' for key 'PRIMARY'
+	at com.mysql.jdbc.SQLError.createBatchUpdateException(SQLError.java:1168)
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:1823)
+	at com.mysql.jdbc.PreparedStatement.executeBatchInternal(PreparedStatement.java:1307)
+	at com.mysql.jdbc.StatementImpl.executeBatch(StatementImpl.java:970)
+	at net.sf.log4jdbc.sql.jdbcapi.StatementSpy.executeBatch(StatementSpy.java:571)
+	at sun.reflect.GeneratedMethodAccessor105.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.tomcat.jdbc.pool.StatementFacade$StatementProxy.invoke(StatementFacade.java:114)
+	at com.sun.proxy.$Proxy81.executeBatch(Unknown Source)
+	at org.apache.ibatis.executor.BatchExecutor.doFlushStatements(BatchExecutor.java:122)
+	at org.apache.ibatis.executor.BaseExecutor.flushStatements(BaseExecutor.java:129)
+	at org.apache.ibatis.executor.BaseExecutor.flushStatements(BaseExecutor.java:122)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.flushStatements(DefaultSqlSession.java:253)
+	at sun.reflect.GeneratedMethodAccessor104.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy78.flushStatements(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.flushStatements(SqlSessionTemplate.java:394)
+	at com.happyhouse.servers.ps.service.AsyncDatabaseExecutor.insertPushDeviceSuccessPpcStatusWithPushItems(AsyncDatabaseExecutor.java:991)
+	at com.happyhouse.servers.ps.service.AsyncDatabaseExecutor$$FastClassBySpringCGLIB$$8dd33f65.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:736)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:671)
+	at com.happyhouse.servers.ps.service.AsyncDatabaseExecutor$$EnhancerBySpringCGLIB$$ed8ea605.insertPushDeviceSuccessPpcStatusWithPushItems(<generated>)
+	at com.happyhouse.servers.ps.service.DatabaseMediator.insertPushDeviceSuccessPpcStatusWithPushItems(DatabaseMediator.java:328)
+	at com.happyhouse.servers.ps.scheduler.DbAgentMessageScheduler$DBAgentPushDeviceSuccessPpcStatusForUpdate.call(DbAgentMessageScheduler.java:1039)
+	at com.happyhouse.servers.ps.scheduler.DbAgentMessageScheduler$DBAgentPushDeviceSuccessPpcStatusForUpdate.call(DbAgentMessageScheduler.java:1020)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '3-5262609-01' for key 'PRIMARY'
+	at sun.reflect.GeneratedConstructorAccessor127.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:936)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2495)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1903)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2124)
+	at com.mysql.jdbc.PreparedStatement.executeBatchSerially(PreparedStatement.java:1801)
+	... 36 common frames omitted
+10:03:59.458[DBAgent-2965][ERROR] 26. PreparedStatement.execute() FAILED! INSERT INTO MPPS_PUSH_DEVICE_SUCCESS
+           (
+           PUSH_DEVICE_ID
+           ,PUSH_TYPE
+           ,SYSTEM_ID
+           ,DEVICE_MSG_UUID
+           ,STATUS
+           ,FAIL_CNT
+           ,REG_DT
+           ,UPT_DT
+           )
+     VALUES
+           (
+           5262609
+           ,'01'
+           ,3
+           ,'TMT3449ca34a27e460dbe23bd5fc41bafe2190726810243474260'
+           ,0
+           ,0
+           ,NOW(3)
+           ,NOW(3)
+           )
+ {FAILED after 0 msec}
+com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '3-5262609-01' for key 'PRIMARY'
+	at sun.reflect.GeneratedConstructorAccessor127.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:936)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3978)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3914)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2495)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1903)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1242)
+	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
+	at sun.reflect.GeneratedMethodAccessor58.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.tomcat.jdbc.pool.StatementFacade$StatementProxy.invoke(StatementFacade.java:114)
+	at com.sun.proxy.$Proxy81.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185)
+	at sun.reflect.GeneratedMethodAccessor115.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy78.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:58)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy79.insertPrivatePushSuccessStatus(Unknown Source)
+	at com.happyhouse.servers.ps.service.SyncDatabaseExecutor.insertPushDeviceSuccessPpcStatusWithPushItem(SyncDatabaseExecutor.java:425)
+	at com.happyhouse.servers.ps.service.SyncDatabaseExecutor$$FastClassBySpringCGLIB$$464c476e.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:736)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:99)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:282)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:671)
+	at com.happyhouse.servers.ps.service.SyncDatabaseExecutor$$EnhancerBySpringCGLIB$$37568bc0.insertPushDeviceSuccessPpcStatusWithPushItem(<generated>)
+	at com.happyhouse.servers.ps.service.DatabaseMediator.insertPushDeviceSuccessPpcStatusWithPushItems(DatabaseMediator.java:333)
+	at com.happyhouse.servers.ps.scheduler.DbAgentMessageScheduler$DBAgentPushDeviceSuccessPpcStatusForUpdate.call(DbAgentMessageScheduler.java:1039)
+	at com.happyhouse.servers.ps.scheduler.DbAgentMessageScheduler$DBAgentPushDeviceSuccessPpcStatusForUpdate.call(DbAgentMessageScheduler.java:1020)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
