@@ -1,0 +1,474 @@
+= RESTful API Document
+by Shin Kwan Young;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:operation-curl-request-title: Example request
+:operation-http-response-title: Example response
+
+[[overview]]
+= Overview
+
+[[overview-http-status-codes]]
+== HTTP status codes
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. The resource's URI is available from the response's
+`Location` header
+
+| `204 No Content`
+| An update to an existing resource has been applied successfully
+
+| `400 Bad Request`
+| The request was malformed. The response body will include an error providing further information
+
+| `404 Not Found`
+| The requested resource did not exist
+|===
+
+[[apis-talk]]
+= Talk APIs
+
+[[apis-talk-COMM.CMPUSHKEY]]
+=== COMM.CMPUSHKEY
+
+설명
+
+==== Protocol
+[source, xml]
+----
+    <body name="CMPUSHKEY">
+        <request>
+            <field name="pcPushKey" type="string"/>
+            <field name="apnsPushKey" type="string"/>
+            <field name="gcmPushKey" type="string"/>
+            <field name="extJsonStr" type="string"/>
+        </request>
+    </body>
+----
+
+==== RESTFull REQ/RES Example
+[source, request]
+----
+    {
+      "platform-header" : {
+        "VERSION" : "PHV102",
+        "APPLICATION_ID" : "COMM",
+        "MESSAGE_ID" : "CMPUSHKEY",
+        "SESSION_ID" : -1,
+        "TRANSACTION_ID" : 1547739758888,
+        "SERVICE_ID" : 0,
+        "IMEI" : "353510091724501",
+        "WIFI_MAC" : "020000000000",
+        "MSISDN" : "01038164095",
+        "MODEL_NO" : "SM-G965N",
+        "ISP_NAME" : "abcdefg",
+        "OS_TYPE" : "A",
+        "OS_VERSION" : "4.9.59-14479316-QB20",
+        "UUID" : "154773975890902000000000",
+        "BODY_TYPE" : 1,
+        "STATUS_CODE" : 0,
+        "HEADER_LENGTH" : 0,
+        "BODY_LENGTH" : 0
+      },
+      "header" : {
+        "ver" : "1.00.17",
+        "authKey" : "",
+        "accountId" : "",
+        "groupCoCd" : "tion",
+        "userIdnfr" : 133,
+        "deviceIdnfr" : 193,
+        "status" : 0,
+        "extJsonStrH" : ""
+      },
+      "body" : {
+        "pcPushKey" : "pfs-2-fc95e879a3214f1a9f1371192b0ddf1dA",
+        "apnsPushKey" : "",
+        "gcmPushKey" : "",
+        "extJsonStr" : ""
+      }
+    }
+----
+[source, response]
+----
+    {
+      "platform-header" : {
+        "VERSION" : "PHV102",
+        "APPLICATION_ID" : "COMM",
+        "MESSAGE_ID" : "CMPUSHKEY",
+        "SESSION_ID" : -1,
+        "TRANSACTION_ID" : 1547739758888,
+        "SERVICE_ID" : 0,
+        "IMEI" : "353510091724501",
+        "WIFI_MAC" : "020000000000",
+        "MSISDN" : "01038164095",
+        "MODEL_NO" : "SM-G965N",
+        "ISP_NAME" : "abcdefg",
+        "OS_TYPE" : "A",
+        "OS_VERSION" : "4.9.59-14479316-QB20",
+        "UUID" : "154773975890902000000000",
+        "BODY_TYPE" : 1,
+        "STATUS_CODE" : 0,
+        "HEADER_LENGTH" : 0,
+        "BODY_LENGTH" : 0
+      },
+      "header" : {
+        "ver" : "1.00.17",
+        "authKey" : "",
+        "accountId" : "",
+        "groupCoCd" : "tion",
+        "userIdnfr" : 133,
+        "deviceIdnfr" : 193,
+        "status" : 0,
+        "extJsonStrH" : ""
+      },
+      "body" : { }
+    }
+----
+
+[[apis-talk-TALK.CTOC00001]]
+=== TALK.CTOC00001
+
+설명
+
+==== Protocol
+[source, xml]
+----
+    <body name="CTOC00001">
+        <request>
+            <field name="line" type="string"/>
+            <field name="caller" type="string"/>
+            <field name="sip-user-id" type="string"/>
+            <field name="dest" type="string"/>
+        </request>
+        <response>
+            <field name="call-id" type="string"/>
+        </response>
+    </body>
+----
+
+==== Push Payload
+
+발신결과 Notification
+[source, json]
+----
+{
+  "type": "C2C_OUT_CALL_RESULT",
+  "result": "202(통화중)/203(없는 번호)/205(기타오류)"
+  "receiver": {
+    "id": 1009774,
+    "name": "사용자04",
+    "position": "",
+    "dept": "",
+    "extension": ""
+  },
+  "date": "20181212162936692"
+}
+----
+전화수신 Notification
+[source, json]
+----
+{
+  "type": "C2C_IN_CALL",
+  "caller": {
+    "id": 1009774,
+    "name": "사용자04",
+    "position": "",
+    "dept": "",
+    "extension": ""
+  },
+  "date": "20181212162936692"
+}
+----
+부재중 전화 Notification
+[source, json]
+----
+{
+  "type": "C2C_IN_MISSED_CALL",
+  "caller": {
+    "id": 1009774,
+    "name": "사용자04",
+    "position": "",
+    "dept": "",
+    "extension": ""
+  },
+  "date": "20181212162936692"
+}
+----
+
+[[apis-talk-TALK.LETTER001]]
+=== TALK.LETTER001
+
+새쪽지, 전달, 회신
+
+==== Protocol
+[source, xml]
+----
+    <body name="LETTER001">
+        <request>
+            <field name="receivers" type="structure" ref="To"/>
+            <field name="subject" type="string"/>
+            <field name="contents" type="string"/>
+            <field name="attach-file-ids" type="structure" ref="Integer"/>
+            <field name="thread-id" type="integer"/> <!-- 새쪽지 일 경우, thread-id 값은 0 으로 셋팅 -->
+        </request>
+        <response>
+            <field name="thread-id" type="integer"/>
+            <field name="notice-id" type="integer"/>
+        </response>
+    </body>
+
+    <structure name="To">
+        <field name="id" type="integer"/>
+        <field name="type" type="short"/>
+    </structure>
+
+    <structure name="Integer">
+        <field name="id" type="integer"/>
+    </structure>
+----
+
+==== Push Payload
+[source, 새쪽지]
+----
+{
+  "type" : "NOTICE_NEW",
+  "thread-id" : 1234,
+  "notice-id" : 5678,
+  "subject" : "제목",
+  "contents" : "내용",
+  "sender" : {
+    "id" : 1,
+    "name" : "신관영",
+    "position" : "수석",
+    "dept" : "개발1팀"
+  },
+  "receivers" : [ {
+    "id" : 2,
+    "name" : "신관영2",
+    "position" : "수석2",
+    "dept" : "개발1팀2"
+  }, {
+    "id" : 3,
+    "name" : "신관영3",
+    "position" : "수석3",
+    "dept" : "개발1팀3"
+  } ],
+  "attachment" : {
+    "url" : "http://127.0.0.1:8081/upload",
+    "files" : [ {
+      "id" : 9991,
+      "name" : "파일1",
+      "path" : "/a/b/c",
+      "size" : 12341
+    }, {
+      "id" : 9992,
+      "name" : "파일2",
+      "path" : "/d/e/f",
+      "size" : 12342
+    } ]
+  },
+  "date" : "20190221150700054"
+}
+----
+[source, 전달/회신]
+----
+{
+  "type" : "NOTICE_RELAY",
+  "thread-id" : 1234,
+  "notice-id" : 5678,
+  "subject" : "제목",
+  "contents" : "내용",
+  "sender" : {
+    "id" : 1,
+    "name" : "신관영",
+    "position" : "수석",
+    "dept" : "개발1팀"
+  },
+  "receivers" : [ {
+    "id" : 2,
+    "name" : "신관영2",
+    "position" : "수석2",
+    "dept" : "개발1팀2"
+  }, {
+    "id" : 3,
+    "name" : "신관영3",
+    "position" : "수석3",
+    "dept" : "개발1팀3"
+  } ],
+  "attachment" : {
+    "url" : "http://127.0.0.1:8081/upload",
+    "files" : [ {
+      "id" : 9991,
+      "name" : "파일1",
+      "path" : "/a/b/c",
+      "size" : 12341
+    }, {
+      "id" : 9992,
+      "name" : "파일2",
+      "path" : "/d/e/f",
+      "size" : 12342
+    } ]
+  },
+  "date" : "20190221150700054"
+}
+----
+
+[[apis-talk-TALK.LETTER002]]
+=== TALK.LETTER002
+
+쪽지 회수
+
+==== Protocol
+[source, xml]
+----
+     <body name="LETTER002">
+         <request>
+             <field name="notice-id" type="integer"/>
+         </request>
+     </body>
+----
+
+==== Push Payload
+[source, 회수]
+----
+{
+  "type": "NOTICE_WITHDRAW",
+  "thread-id": 1234,
+  "notice-id": 1234,
+  "retractor": {
+    "id": 11231,
+    "name": "이름",
+    "position": "과장",
+    "dept": "개발1팀"
+  },
+  "date": "20181212162936692"
+}
+----
+
+[[apis-talk-TALK.LETTER003]]
+=== TALK.LETTER003
+
+쪽지 읽음처리
+
+==== Protocol
+[source, xml]
+----
+     <body name="LETTER003">
+         <request>
+             <field name="notice-id" type="integer"/>
+         </request>
+     </body>
+----
+
+==== Push Payload
+[source, 읽음처리]
+----
+{
+  "type": "NOTICE_READ",
+  "thread-id": 1234,
+  "notice-id": 1234,
+  "reader": {
+    "id": 11231,
+    "name": "이름",
+    "position": "과장",
+    "dept": "개발1팀"
+  },
+  "date": "20181212162936692"
+}
+----
+
+[[apis-talk-TALK.LETTER004]]
+=== TALK.LETTER004
+
+쪽지 수신자 상세정보 조회
+
+==== Protocol
+[source, xml]
+----
+     <body name="LETTER004">
+         <request>
+             <field name="notice-id" type="integer"/>
+         </request>
+         <response>
+             <field name="receivers" type="structure" ref="NoticeReceiver"/>
+         </response>
+     </body>
+
+     <structure name="NoticeReceiver">
+         <field name="userIdnfr" type="integer"/>
+         <field name="name" type="string"/> <!-- 그룹원명 -->
+         <field name="position" type="string"/> <!-- 그룹원인 경우 직위(대리, 과장, 차장..)-->
+         <field name="deptName" type="string"/> <!-- 부서명 -->
+         <field name="upperDeptName" type="string"/> <!-- 상위 부서명 -->
+     </structure>
+----
+
+[[apis-tapi]]
+= TAPI APIs
+
+[[apis-tapi-1001]]
+=== Command 1001
+발신요청 +
+MeetTalk Server -> TAPI Server
+
+==== Example request
+
+include::{snippets}/doc/api/tapi/1001/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/doc/api/tapi/1001/http-response.adoc[]
+
+[[apis-tapi-1002]]
+=== Command 1002
+
+발신결과 Notification +
+TAPI Server -> MeetTalk Server
+
+==== Example request
+
+include::{snippets}/doc/api/tapi/1002/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/doc/api/tapi/1002/http-response.adoc[]
+
+[[apis-tapi-2001]]
+=== Command 2001
+
+호 인입 Notification +
+TAPI Server -> MeetTalk Server
+
+
+==== Example request
+
+include::{snippets}/doc/api/tapi/2001/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/doc/api/tapi/2001/http-response.adoc[]
+
+[[apis-tapi-3001]]
+=== Command 3001
+
+부재호 Notification +
+TAPI Server -> MeetTalk Server
+
+
+==== Example request
+
+include::{snippets}/doc/api/tapi/3001/curl-request.adoc[]
+
+==== Example response
+
+include::{snippets}/doc/api/tapi/3001/http-response.adoc[]
