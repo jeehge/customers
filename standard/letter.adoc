@@ -243,7 +243,3 @@ by Shin Kwan Young;
          <field name="upperDeptName" type="string"/> <!-- 상위 부서명 -->
      </structure>
 ----
-
-==== Example response
-
-include::{snippets}/doc/api/tapi/3001/http-response.adoc[]
