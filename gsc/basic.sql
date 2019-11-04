@@ -25,7 +25,7 @@ SELECT userInfo.userIdnfr,
   AND pushDevice.MSG_UUID = pushData.MSG_UUID
   AND userInfo.regiStusDstcd = '10'
   AND deviceInfo.regiStusDstcd = '10'
-  AND userInfo.name = '박경재'
+  AND userInfo.name = '신관영'
   AND deviceInfo.devceOsType in ('P')
 	--AND pushHistory.reg_dt >= '2019-11-04' AND pushHistory.reg_dt < '2019-11-05'
 	--AND pushHistory.device_msg_uuid = 'TMTf75b0701295c41488cafb9fd6d2180a9151254832484347920'
