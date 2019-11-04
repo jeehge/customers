@@ -10,13 +10,13 @@ SELECT userInfo.userIdnfr,
        pushHistory.PPC_PUSH_STATUS,
        pushHistory.REG_DT,
        pushData.PAYLOAD
-  FROM [MTALK].[pms].[mPMS_USER_INFO10] userInfo,
-       [MTALK].[pms].[mPMS_USER_DEVICE10] deviceInfo,
-       [MTALK].[pms].[mPMS_PUSH_KEY_INFO] pmsPushkeyInfo,
-       [MTALK].[pps].[mPPS_PUSH_KEY_MAP] ppsPushkeyInfo,
-       [MTALK].[pps].[MPPS_PUSH_DEVICE] pushDevice,
-       [MTALK].[pps].[MPPS_PUSH_DATA_HISTORY] pushHistory,
-       [MTALK].[pps].[MPPS_PUSH_DATA] pushData
+  FROM [SILVY_OSP].[pms].[mPMS_USER_INFO10] userInfo,
+       [SILVY_OSP].[pms].[mPMS_USER_DEVICE10] deviceInfo,
+       [SILVY_OSP].[pms].[mPMS_PUSH_KEY_INFO] pmsPushkeyInfo,
+       [SILVY_OSP].[pps].[mPPS_PUSH_KEY_MAP] ppsPushkeyInfo,
+       [SILVY_OSP].[pps].[MPPS_PUSH_DEVICE] pushDevice,
+       [SILVY_OSP].[pps].[MPPS_PUSH_DATA_HISTORY] pushHistory,
+       [SILVY_OSP].[pps].[MPPS_PUSH_DATA] pushData
   WHERE userinfo.userIdnfr = deviceInfo.userIdnfr
   AND deviceInfo.userDevceIdnfr = pmsPushkeyInfo.userDevceIdnfr
   AND pmsPushKeyInfo.pcPushKey = ppsPushkeyInfo.PPC_PUSH_KEY
@@ -25,9 +25,11 @@ SELECT userInfo.userIdnfr,
   AND pushDevice.MSG_UUID = pushData.MSG_UUID
   AND userInfo.regiStusDstcd = '10'
   AND deviceInfo.regiStusDstcd = '10'
-  AND userInfo.name = '이승원'
-  AND deviceInfo.devceOsType in ('A')
-  ORDER BY pushHistory.reg_dt DESC;
+  AND userInfo.name = '박경재'
+  AND deviceInfo.devceOsType in ('P')
+	--AND pushHistory.reg_dt >= '2019-11-04' AND pushHistory.reg_dt < '2019-11-05'
+	--AND pushHistory.device_msg_uuid = 'TMTf75b0701295c41488cafb9fd6d2180a9151254832484347920'
+  ORDER BY pushHistory.reg_dt ASC;
   
   
 select distinct substring(uuid, 18, 10) from pps.mpps_push_key_map
