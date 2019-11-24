@@ -61,6 +61,9 @@ CREATE TABLE [pbt].[Talk_Server_Config_Info] (
   [upd_dt] datetime2(7) DEFAULT (getdate()) NOT NULL
 )
 GO
+
+ALTER TABLE [pbt].[Talk_Server_Config_Info] ADD CONSTRAINT [PK_Talk_Server_Config_Info] PRIMARY KEY CLUSTERED ([config_key])
+GO
 -------------------------------------------------------------------------------------------------				 
 Download-Allow-Code-For.C1	C7,C8	0	2019-11-05 09:53:30.5730000	0	2019-11-05 09:53:30.5730000
 Download-Allow-Code-For.C7	C1,C8	0	2019-11-08 03:26:37.0000000	0	2019-11-08 03:27:35.0000000
